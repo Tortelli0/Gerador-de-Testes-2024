@@ -1,5 +1,4 @@
 using GeradorDeTestes.WinForm.Compartilhado;
-using GeradorDeTestes.WinForm.Compartilhado;
 
 namespace GeradorDeTestes.WinForm
 {

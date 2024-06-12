@@ -2,18 +2,22 @@
 {
     public class Alternativa
     {
-        public string Texto { get; set; }
+        public string Descricao { get; set; }
         public bool Correta { get; set; }
 
-        public Alternativa(string texto)
+        public Alternativa(string descricao)
         {
-            Texto = texto;
+            Descricao = descricao;
             Correta = false;
         }
 
         public void MarcarCorreta()
         {
             Correta = true;
+        }
+        public override string ToString()
+        {
+            return $"{Descricao}";
         }
     }
 }

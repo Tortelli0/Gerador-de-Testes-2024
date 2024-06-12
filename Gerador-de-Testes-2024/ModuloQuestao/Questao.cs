@@ -36,5 +36,14 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
             return erros;
         }
+        public Alternativa RetornarRespostaCorreta()
+        {
+            foreach (Alternativa a in Alternativas)
+            {
+                if (a.Correta)
+                    return a;
+            }
+            return null;
+        }
     }
 }
