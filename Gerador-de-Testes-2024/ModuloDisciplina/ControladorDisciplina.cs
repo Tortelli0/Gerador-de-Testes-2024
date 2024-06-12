@@ -71,7 +71,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
             CarregarDisciplinas();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{disciplinaEditada.Nome}\" foi criado com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{disciplinaEditada.Nome}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
@@ -105,7 +105,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
             CarregarDisciplinas();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{disciplinaSelecionada.Nome}\" foi criado com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{disciplinaSelecionada.Nome}\" foi excluido com sucesso!");
         }
 
         public override UserControl ObterListagem()
