@@ -1,4 +1,4 @@
-﻿namespace eAgenda.WinApp.Compartilhado
+﻿namespace GeradorDeTestes.WinForm.Compartilhado
 {
     public abstract class ControladorBase
     {

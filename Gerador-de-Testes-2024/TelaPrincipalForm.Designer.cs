@@ -1,4 +1,4 @@
-﻿namespace FestasInfantis.WinApp
+﻿namespace GeradorDeTestes.WinForm
 {
     partial class TelaPrincipalForm
     {
@@ -100,7 +100,7 @@
             // 
             btnAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnAdicionar.Enabled = false;
-            btnAdicionar.Image = Gerador_de_Testes_2024.Properties.Resources.btnAdicionar;
+            btnAdicionar.Image = GeradorDeTestes2024.Properties.Resources.btnAdicionar;
             btnAdicionar.ImageScaling = ToolStripItemImageScaling.None;
             btnAdicionar.ImageTransparentColor = Color.Magenta;
             btnAdicionar.Name = "btnAdicionar";
@@ -112,7 +112,7 @@
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnEditar.Enabled = false;
-            btnEditar.Image = Gerador_de_Testes_2024.Properties.Resources.btnEditar;
+            btnEditar.Image = GeradorDeTestes2024.Properties.Resources.btnEditar;
             btnEditar.ImageScaling = ToolStripItemImageScaling.None;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
@@ -124,7 +124,7 @@
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnExcluir.Enabled = false;
-            btnExcluir.Image = Gerador_de_Testes_2024.Properties.Resources.btnExcluir;
+            btnExcluir.Image = GeradorDeTestes2024.Properties.Resources.btnExcluir;
             btnExcluir.ImageScaling = ToolStripItemImageScaling.None;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
@@ -141,7 +141,7 @@
             // 
             btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnFiltrar.Enabled = false;
-            btnFiltrar.Image = Gerador_de_Testes_2024.Properties.Resources.btnFiltrar;
+            btnFiltrar.Image = GeradorDeTestes2024.Properties.Resources.btnFiltrar;
             btnFiltrar.ImageScaling = ToolStripItemImageScaling.None;
             btnFiltrar.ImageTransparentColor = Color.Magenta;
             btnFiltrar.Name = "btnFiltrar";

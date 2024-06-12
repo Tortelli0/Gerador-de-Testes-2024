@@ -1,6 +1,6 @@
-﻿using eAgenda.ConsoleApp.Compartilhado;
+﻿using GeradorDeTestes.ConsoleApp.Compartilhado;
 
-namespace FestasInfantis.WinApp.Compartilhado
+namespace GeradorDeTestes.WinForm.Compartilhado
 {
     public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase
     {

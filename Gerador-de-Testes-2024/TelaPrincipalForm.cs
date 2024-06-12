@@ -1,7 +1,7 @@
-using eAgenda.WinApp.Compartilhado;
-using FestasInfantis.WinApp.Compartilhado;
+using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes.WinForm.Compartilhado;
 
-namespace FestasInfantis.WinApp
+namespace GeradorDeTestes.WinForm
 {
     public partial class TelaPrincipalForm : Form
     {

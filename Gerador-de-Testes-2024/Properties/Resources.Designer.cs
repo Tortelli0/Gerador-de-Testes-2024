@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gerador_de_Testes_2024.Properties {
+namespace GeradorDeTestes2024.Properties {
     using System;
     
     

@@ -1,4 +1,4 @@
-﻿namespace Gerador_de_Testes_2024.ModuloDisciplina
+﻿namespace GeradorDeTestes2024.ModuloDisciplina
 {
     public class Disciplina
     {

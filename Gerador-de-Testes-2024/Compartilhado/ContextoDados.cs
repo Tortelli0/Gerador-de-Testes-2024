@@ -1,12 +1,12 @@
-﻿using Gerador_de_Testes_2024.ModuloDisciplina;
-using Gerador_de_Testes_2024.ModuloMateria;
-using Gerador_de_Testes_2024.ModuloQuestao;
-using Gerador_de_Testes_2024.ModuloTeste;
+﻿using GeradorDeTestes2024.ModuloDisciplina;
+using GeradorDeTestes2024.ModuloMateria;
+using GeradorDeTestes2024.ModuloQuestao;
+using GeradorDeTestes2024.ModuloTeste;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 
-namespace FestasInfantis.WinApp.Compartilhado
+namespace GeradorDeTestes.WinForm.Compartilhado
 {
     public class ContextoDados
     {

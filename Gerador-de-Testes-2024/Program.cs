@@ -1,6 +1,6 @@
-using FestasInfantis.WinApp;
+using GeradorDeTestes.WinForm;
 
-namespace Gerador_de_Testes_2024
+namespace GeradorDeTestes2024
 {
     internal static class Program
     {

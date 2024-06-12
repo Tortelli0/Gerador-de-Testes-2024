@@ -1,4 +1,4 @@
-﻿namespace Gerador_de_Testes_2024
+﻿namespace GeradorDeTestes2024
 {
     partial class Intro
     {

@@ -1,4 +1,4 @@
-﻿namespace eAgenda.ConsoleApp.Compartilhado
+﻿namespace GeradorDeTestes.ConsoleApp.Compartilhado
 {
     public abstract class EntidadeBase
     {
