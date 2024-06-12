@@ -1,5 +1,6 @@
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes2024.ModuloDisciplina;
 
 namespace GeradorDeTestes.WinForm
 {
@@ -7,6 +8,7 @@ namespace GeradorDeTestes.WinForm
     {
         ControladorBase controlador;
         ContextoDados contexto;
+        IRepositorioDisciplina repositorioDisciplina;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -17,6 +19,8 @@ namespace GeradorDeTestes.WinForm
 
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
+
+            repositorioDisciplina = new RepositorioDisciplina(contexto);
         }
 
         public void AtualizarRodape(string texto)
@@ -26,7 +30,7 @@ namespace GeradorDeTestes.WinForm
 
         private void DisciplinaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //controlador = new ControladorDisciplina(repositorioDisciplina);
+            controlador = new ControladorDisciplina(repositorioDisciplina);
 
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
