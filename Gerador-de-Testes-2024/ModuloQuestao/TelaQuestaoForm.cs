@@ -5,7 +5,6 @@ namespace GeradorDeTestes2024.ModuloQuestao
 {
     public partial class TelaQuestaoForm : Form
     {
-        private List<char> letrasUsadas = new List<char>();
         private Alternativa alternativa;
         private Questao questao;
         public Questao Questao
@@ -51,17 +50,17 @@ namespace GeradorDeTestes2024.ModuloQuestao
         {
             string descricao = txtResposta.Text;
             alternativa = new Alternativa(descricao);
-            letrasUsadas.Add(alternativa.AdicionarFormatoAlternativa(letrasUsadas));
             listAlternativas.Items.Add(alternativa);
+            RefatorarAlternativasDinamicamente();
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
             if (listAlternativas.SelectedIndex != -1)
             {
-                Alternativa alternativaSelecionada = (Alternativa)listAlternativas.SelectedItem;
-                letrasUsadas.Remove(alternativaSelecionada.Descricao[1]);
                 listAlternativas.Items.RemoveAt(listAlternativas.SelectedIndex);
+                RefatorarAlternativasDinamicamente();
+
             }
 
             else
@@ -98,7 +97,15 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
                 DialogResult = DialogResult.None;
             }
-
+        }
+        private void RefatorarAlternativasDinamicamente()
+        {
+            int x = 0;
+            foreach (Alternativa a in listAlternativas.Items)
+            {
+                a.RefatorarModeloAlternativa(x);
+                x++;
+            }
         }
     }
 }

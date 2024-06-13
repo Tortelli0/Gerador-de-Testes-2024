@@ -1,4 +1,5 @@
 ﻿
+
 namespace GeradorDeTestes2024.ModuloQuestao
 {
     public class Alternativa
@@ -21,23 +22,16 @@ namespace GeradorDeTestes2024.ModuloQuestao
             return $"{Descricao}";
         }
 
-        internal char AdicionarFormatoAlternativa(List<char> letrasUsadas)
-        {
-            char letra = (char)65;
-            for (int i = 65; i < 91; i++)
-            {
-                letra = (char)i;
-                if (!letrasUsadas.Contains(letra))
-                {
-                    Descricao = $"({letra}) -> {Descricao}";
-                    break;
-                }
-            }
-            return letra;
-        }
         public void LimparRespostaCorreta()
         {
             Correta = false;
+        }
+
+        internal void RefatorarModeloAlternativa(int count)
+        {
+            if (Descricao.Contains("->"))
+                Descricao = Descricao.Split(" ")[2];
+            Descricao = $"({(char)(65 + count)}) -> {Descricao}";
         }
     }
 }
