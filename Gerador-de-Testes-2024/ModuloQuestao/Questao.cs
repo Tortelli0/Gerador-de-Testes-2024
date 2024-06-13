@@ -68,5 +68,14 @@ namespace GeradorDeTestes2024.ModuloQuestao
             }
             return quantidade;
         }
+        public bool EnunciadoIgual(List<Questao> questoes)
+        {
+            foreach (Questao q in questoes)
+            {
+                if (q.Enunciado == Enunciado)
+                    return true;
+            }
+            return false;
+        }
     }
 }

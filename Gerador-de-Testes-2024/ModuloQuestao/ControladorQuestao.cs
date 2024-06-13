@@ -24,7 +24,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         public override void Adicionar()
         {
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm();
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos());
 
             DialogResult resultado = telaQuestao.ShowDialog();
 
@@ -44,7 +44,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
         {
             Questao QuestaoSelecionado = repositorioQuestao.SelecionarPorId(tabelaQuestao.ObterRegistroSelecionado());
 
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm();
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos());
 
             if (QuestaoSelecionado == null)
             {

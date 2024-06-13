@@ -6,6 +6,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
 {
     public partial class TelaQuestaoForm : Form
     {
+        private List<Questao> questoes;
         private Alternativa alternativa;
         private Questao questao;
         public Questao Questao
@@ -31,9 +32,10 @@ namespace GeradorDeTestes2024.ModuloQuestao
             }
         }
 
-        public TelaQuestaoForm()
+        public TelaQuestaoForm(List<Questao> questoes)
         {
             InitializeComponent();
+            this.questoes = questoes;
             this.ConfigurarDialog();
             CarregarComboBox();
         }
@@ -92,7 +94,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string materia = (string)cmbMateria.SelectedItem;
-            string enunciado = txtEnunciado.Text;
+            string enunciado = txtEnunciado.Text.Trim();
 
             List<Alternativa> alternativas = new List<Alternativa>();
 
@@ -112,6 +114,11 @@ namespace GeradorDeTestes2024.ModuloQuestao
             if (erros.Count > 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+                DialogResult = DialogResult.None;
+            }
+            if (questao.EnunciadoIgual(questoes))
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível cadastrar uma questão com o mesmo enunciado");
                 DialogResult = DialogResult.None;
             }
         }
