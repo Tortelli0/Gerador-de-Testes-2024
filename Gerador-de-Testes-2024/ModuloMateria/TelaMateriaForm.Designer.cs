@@ -44,7 +44,7 @@
             // btnGravar
             // 
             btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(183, 275);
+            btnGravar.Location = new Point(146, 226);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(88, 29);
             btnGravar.TabIndex = 2;
@@ -55,7 +55,7 @@
             // button2
             // 
             button2.DialogResult = DialogResult.Cancel;
-            button2.Location = new Point(279, 275);
+            button2.Location = new Point(242, 226);
             button2.Name = "button2";
             button2.Size = new Size(88, 29);
             button2.TabIndex = 2;
@@ -99,7 +99,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(51, 176);
+            label4.Location = new Point(51, 172);
             label4.Name = "label4";
             label4.Size = new Size(35, 15);
             label4.TabIndex = 1;
@@ -131,7 +131,7 @@
             // 
             groupBoxMateria.Controls.Add(radioButtonSerie2);
             groupBoxMateria.Controls.Add(radioButtonSerie1);
-            groupBoxMateria.Location = new Point(92, 150);
+            groupBoxMateria.Location = new Point(92, 152);
             groupBoxMateria.Name = "groupBoxMateria";
             groupBoxMateria.Size = new Size(85, 54);
             groupBoxMateria.TabIndex = 5;
@@ -141,7 +141,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(395, 316);
+            ClientSize = new Size(348, 267);
             Controls.Add(groupBoxMateria);
             Controls.Add(comboBoxMateriaDisciplina);
             Controls.Add(button2);
