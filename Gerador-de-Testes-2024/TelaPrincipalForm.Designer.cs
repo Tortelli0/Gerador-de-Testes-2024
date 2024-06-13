@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             disciplinasMenuItem = new ToolStripMenuItem();
+            questoesToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -42,7 +43,7 @@
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            questoesToolStripMenuItem = new ToolStripMenuItem();
+            matériaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -60,7 +61,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasMenuItem, questoesToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasMenuItem, matériaToolStripMenuItem, questoesToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -71,6 +72,13 @@
             disciplinasMenuItem.Size = new Size(180, 24);
             disciplinasMenuItem.Text = "Disciplinas";
             disciplinasMenuItem.Click += DisciplinaToolStripMenuItem_Click;
+            // 
+            // questoesToolStripMenuItem
+            // 
+            questoesToolStripMenuItem.Name = "questoesToolStripMenuItem";
+            questoesToolStripMenuItem.Size = new Size(180, 24);
+            questoesToolStripMenuItem.Text = "Questões";
+            questoesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -169,12 +177,12 @@
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
             // 
-            // questoesToolStripMenuItem
+            // matériaToolStripMenuItem
             // 
-            questoesToolStripMenuItem.Name = "questoesToolStripMenuItem";
-            questoesToolStripMenuItem.Size = new Size(180, 24);
-            questoesToolStripMenuItem.Text = "Questões";
-            questoesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
+            matériaToolStripMenuItem.Name = "matériaToolStripMenuItem";
+            matériaToolStripMenuItem.Size = new Size(180, 24);
+            matériaToolStripMenuItem.Text = "Matéria";
+            matériaToolStripMenuItem.Click += matériaToolStripMenuItem_Click;
             // 
             // TelaPrincipalForm
             // 
@@ -220,5 +228,6 @@
         private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem questoesToolStripMenuItem;
+        private ToolStripMenuItem matériaToolStripMenuItem;
     }
 }
