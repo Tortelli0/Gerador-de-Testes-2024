@@ -77,8 +77,8 @@
             // 
             materiaToolStripMenuItem.Name = "materiaToolStripMenuItem";
             materiaToolStripMenuItem.Size = new Size(180, 24);
-            materiaToolStripMenuItem.Text = "Materia";
-            materiaToolStripMenuItem.Click += matériaToolStripMenuItem_Click;
+            materiaToolStripMenuItem.Text = "Matéria";
+            materiaToolStripMenuItem.Click += materiaToolStripMenuItem_Click_1;
             // 
             // questoesToolStripMenuItem
             // 
