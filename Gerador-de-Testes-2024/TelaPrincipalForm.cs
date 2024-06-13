@@ -41,7 +41,7 @@ namespace GeradorDeTestes.WinForm
             ConfigurarTelaPrincipal(controlador);
         }
 
-        private void matériaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void materiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
 

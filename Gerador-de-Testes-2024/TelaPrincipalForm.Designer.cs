@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             disciplinasMenuItem = new ToolStripMenuItem();
+            materiaToolStripMenuItem = new ToolStripMenuItem();
             questoesToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
@@ -43,7 +44,6 @@
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            matériaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -61,7 +61,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasMenuItem, matériaToolStripMenuItem, questoesToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasMenuItem, materiaToolStripMenuItem, questoesToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -72,6 +72,13 @@
             disciplinasMenuItem.Size = new Size(180, 24);
             disciplinasMenuItem.Text = "Disciplinas";
             disciplinasMenuItem.Click += DisciplinaToolStripMenuItem_Click;
+            // 
+            // materiaToolStripMenuItem
+            // 
+            materiaToolStripMenuItem.Name = "materiaToolStripMenuItem";
+            materiaToolStripMenuItem.Size = new Size(180, 24);
+            materiaToolStripMenuItem.Text = "Materia";
+            materiaToolStripMenuItem.Click += matériaToolStripMenuItem_Click;
             // 
             // questoesToolStripMenuItem
             // 
@@ -177,13 +184,6 @@
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
             // 
-            // matériaToolStripMenuItem
-            // 
-            matériaToolStripMenuItem.Name = "matériaToolStripMenuItem";
-            matériaToolStripMenuItem.Size = new Size(180, 24);
-            matériaToolStripMenuItem.Text = "Matéria";
-            matériaToolStripMenuItem.Click += matériaToolStripMenuItem_Click;
-            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -228,6 +228,6 @@
         private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem questoesToolStripMenuItem;
-        private ToolStripMenuItem matériaToolStripMenuItem;
+        private ToolStripMenuItem materiaToolStripMenuItem;
     }
 }
