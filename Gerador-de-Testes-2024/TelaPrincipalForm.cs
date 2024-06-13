@@ -1,6 +1,7 @@
 using GeradorDeTestes2024.ModuloQuestao;
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
+using GeradorDeTestes2024.ModuloMateria;
 
 namespace GeradorDeTestes.WinForm
 {
@@ -9,8 +10,9 @@ namespace GeradorDeTestes.WinForm
         ControladorBase controlador;
         ContextoDados contexto;
         IRepositorioDisciplina repositorioDisciplina;
-
+        IRepositorioMateria repositorioMateria;
         IRepositorioQuestao repositorioQuestao;
+
         public static TelaPrincipalForm Instancia { get; private set; }
 
         public TelaPrincipalForm()
@@ -23,6 +25,7 @@ namespace GeradorDeTestes.WinForm
 
             repositorioQuestao = new RepositorioQuestao(contexto);
             repositorioDisciplina = new RepositorioDisciplina(contexto);
+            repositorioMateria = new RepositorioMateria(contexto);
         }
 
         public void AtualizarRodape(string texto)
@@ -37,6 +40,15 @@ namespace GeradorDeTestes.WinForm
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
         }
+
+        private void matériaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
+
+            lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorQuestao(repositorioQuestao);
