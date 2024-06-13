@@ -23,7 +23,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
         public override void Adicionar()
         {
-            TelaDisciplinaForm telaDisciplina= new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos());
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos());
 
             DialogResult resultado = telaDisciplina.ShowDialog();
 
@@ -86,7 +86,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
                      "Não é possível realizar esta ação sem um registro selecionado.",
                      "Aviso",
                      MessageBoxButtons.OK,
-                     MessageBoxIcon.Error
+                     MessageBoxIcon.Warning
                      );
                 return;
             }
