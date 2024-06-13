@@ -1,10 +1,12 @@
 ﻿
 using GeradorDeTestes.WinForm;
+using GeradorDeTestes2024.Compartilhado;
 
 namespace GeradorDeTestes2024.ModuloQuestao
 {
     public partial class TelaQuestaoForm : Form
     {
+        private List<Questao> questoes;
         private Alternativa alternativa;
         private Questao questao;
         public Questao Questao
@@ -30,9 +32,11 @@ namespace GeradorDeTestes2024.ModuloQuestao
             }
         }
 
-        public TelaQuestaoForm()
+        public TelaQuestaoForm(List<Questao> questoes)
         {
             InitializeComponent();
+            this.questoes = questoes;
+            this.ConfigurarDialog();
             CarregarComboBox();
         }
 
@@ -48,10 +52,25 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            string descricao = txtResposta.Text;
+            string descricao = txtResposta.Text.Trim();
             alternativa = new Alternativa(descricao);
+            if (ValidarAlternativaIgual(alternativa))
+                return;
             listAlternativas.Items.Add(alternativa);
             RefatorarAlternativasDinamicamente();
+        }
+
+        private bool ValidarAlternativaIgual(Alternativa alternativa)
+        {
+            foreach (Alternativa a in listAlternativas.Items)
+            {
+                if (a.Descricao.Contains(alternativa.Descricao))
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível cadastrar a mesma alternativa");
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
@@ -75,7 +94,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string materia = (string)cmbMateria.SelectedItem;
-            string enunciado = txtEnunciado.Text;
+            string enunciado = txtEnunciado.Text.Trim();
 
             List<Alternativa> alternativas = new List<Alternativa>();
 
@@ -95,6 +114,11 @@ namespace GeradorDeTestes2024.ModuloQuestao
             if (erros.Count > 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+                DialogResult = DialogResult.None;
+            }
+            if (questao.EnunciadoIgual(questoes))
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível cadastrar uma questão com o mesmo enunciado");
                 DialogResult = DialogResult.None;
             }
         }
