@@ -1,4 +1,5 @@
 ﻿using GeradorDeTestes.WinForm;
+using GeradorDeTestes2024.Compartilhado;
 
 namespace GeradorDeTestes2024.ModuloDisciplina
 {
@@ -10,7 +11,6 @@ namespace GeradorDeTestes2024.ModuloDisciplina
         {
             set
             {
-                txtIdDisciplina.Text = value.Id.ToString();
                 txtNomeDisciplina.Text = value.Nome;
             }
             get
@@ -23,11 +23,12 @@ namespace GeradorDeTestes2024.ModuloDisciplina
         {
             InitializeComponent();
             this.disciplinas = disciplinas;
+            this.ConfigurarDialog();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            string nome = txtNomeDisciplina.Text;
+            string nome = txtNomeDisciplina.Text.Trim();
 
             disciplina = new Disciplina(nome);
 

@@ -28,51 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            labelId = new Label();
             labelNome = new Label();
-            txtIdDisciplina = new TextBox();
             txtNomeDisciplina = new TextBox();
             btnGravar = new Button();
             button2 = new Button();
             SuspendLayout();
             // 
-            // labelId
-            // 
-            labelId.AutoSize = true;
-            labelId.Location = new Point(76, 94);
-            labelId.Name = "labelId";
-            labelId.Size = new Size(20, 15);
-            labelId.TabIndex = 0;
-            labelId.Text = "Id:";
-            // 
             // labelNome
             // 
             labelNome.AutoSize = true;
-            labelNome.Location = new Point(53, 134);
+            labelNome.Location = new Point(33, 64);
             labelNome.Name = "labelNome";
             labelNome.Size = new Size(43, 15);
             labelNome.TabIndex = 1;
             labelNome.Text = "Nome:";
             // 
-            // txtIdDisciplina
-            // 
-            txtIdDisciplina.Enabled = false;
-            txtIdDisciplina.Location = new Point(102, 91);
-            txtIdDisciplina.Name = "txtIdDisciplina";
-            txtIdDisciplina.Size = new Size(52, 23);
-            txtIdDisciplina.TabIndex = 2;
-            // 
             // txtNomeDisciplina
             // 
-            txtNomeDisciplina.Location = new Point(102, 131);
+            txtNomeDisciplina.Location = new Point(82, 61);
             txtNomeDisciplina.Name = "txtNomeDisciplina";
-            txtNomeDisciplina.Size = new Size(199, 23);
+            txtNomeDisciplina.Size = new Size(235, 23);
             txtNomeDisciplina.TabIndex = 3;
             // 
             // btnGravar
             // 
             btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(176, 228);
+            btnGravar.Location = new Point(149, 137);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(81, 26);
             btnGravar.TabIndex = 4;
@@ -82,7 +63,8 @@
             // 
             // button2
             // 
-            button2.Location = new Point(263, 228);
+            button2.DialogResult = DialogResult.Cancel;
+            button2.Location = new Point(236, 137);
             button2.Name = "button2";
             button2.Size = new Size(81, 26);
             button2.TabIndex = 5;
@@ -93,13 +75,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(355, 265);
+            ClientSize = new Size(329, 175);
             Controls.Add(button2);
             Controls.Add(btnGravar);
             Controls.Add(txtNomeDisciplina);
-            Controls.Add(txtIdDisciplina);
             Controls.Add(labelNome);
-            Controls.Add(labelId);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaDisciplinaForm";
@@ -110,10 +90,7 @@
         }
 
         #endregion
-
-        private Label labelId;
         private Label labelNome;
-        private TextBox txtIdDisciplina;
         private TextBox txtNomeDisciplina;
         private Button btnGravar;
         private Button button2;

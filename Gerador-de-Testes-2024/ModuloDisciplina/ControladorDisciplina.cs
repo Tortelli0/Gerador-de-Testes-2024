@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes2024.ModuloMateria;
 
 
 namespace GeradorDeTestes2024.ModuloDisciplina
@@ -12,6 +13,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
         public ControladorDisciplina(IRepositorioDisciplina repoDisciplina)
         {
             repositorioDisciplina = repoDisciplina;
+            AtualizarRodapeQuantidadeRegistros();
         }
 
         public override string TipoCadastro { get { return "Disciplina"; } }
@@ -125,6 +127,10 @@ namespace GeradorDeTestes2024.ModuloDisciplina
             List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
 
             tabelaDisciplina.AtualizarRegistros(disciplinas);
+        }
+        private void AtualizarRodapeQuantidadeRegistros()
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {repositorioDisciplina.SelecionarTodos().Count} registro(s)...");
         }
     }
 }
