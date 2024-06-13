@@ -1,5 +1,6 @@
 ﻿
 using GeradorDeTestes.WinForm;
+using GeradorDeTestes2024.Compartilhado;
 
 namespace GeradorDeTestes2024.ModuloQuestao
 {
@@ -33,6 +34,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
         public TelaQuestaoForm()
         {
             InitializeComponent();
+            this.ConfigurarDialog();
             CarregarComboBox();
         }
 
@@ -48,10 +50,25 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            string descricao = txtResposta.Text;
+            string descricao = txtResposta.Text.Trim();
             alternativa = new Alternativa(descricao);
+            if (ValidarAlternativaIgual(alternativa))
+                return;
             listAlternativas.Items.Add(alternativa);
             RefatorarAlternativasDinamicamente();
+        }
+
+        private bool ValidarAlternativaIgual(Alternativa alternativa)
+        {
+            foreach (Alternativa a in listAlternativas.Items)
+            {
+                if (a.Descricao.Contains(alternativa.Descricao))
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível cadastrar a mesma alternativa");
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
