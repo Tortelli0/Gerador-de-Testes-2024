@@ -1,4 +1,4 @@
-using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes2024.ModuloQuestao;
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
 
@@ -10,6 +10,7 @@ namespace GeradorDeTestes.WinForm
         ContextoDados contexto;
         IRepositorioDisciplina repositorioDisciplina;
 
+        IRepositorioQuestao repositorioQuestao;
         public static TelaPrincipalForm Instancia { get; private set; }
 
         public TelaPrincipalForm()
@@ -20,6 +21,7 @@ namespace GeradorDeTestes.WinForm
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
+            repositorioQuestao = new RepositorioQuestao(contexto);
             repositorioDisciplina = new RepositorioDisciplina(contexto);
         }
 
@@ -35,7 +37,13 @@ namespace GeradorDeTestes.WinForm
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
         }
+        private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorQuestao(repositorioQuestao);
 
+            lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
+            ConfigurarTelaPrincipal(controlador);
+        }
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -95,5 +103,7 @@ namespace GeradorDeTestes.WinForm
         {
             Application.Exit();
         }
+
+
     }
 }
