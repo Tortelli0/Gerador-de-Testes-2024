@@ -42,6 +42,7 @@
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
+            questoesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -59,7 +60,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasMenuItem, questoesToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -67,7 +68,7 @@
             // disciplinasMenuItem
             // 
             disciplinasMenuItem.Name = "disciplinasMenuItem";
-            disciplinasMenuItem.Size = new Size(149, 24);
+            disciplinasMenuItem.Size = new Size(180, 24);
             disciplinasMenuItem.Text = "Disciplinas";
             disciplinasMenuItem.Click += DisciplinaToolStripMenuItem_Click;
             // 
@@ -168,6 +169,13 @@
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
             // 
+            // questoesToolStripMenuItem
+            // 
+            questoesToolStripMenuItem.Name = "questoesToolStripMenuItem";
+            questoesToolStripMenuItem.Size = new Size(180, 24);
+            questoesToolStripMenuItem.Text = "Questões";
+            questoesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -211,5 +219,6 @@
         private ToolStripLabel lblTipoCadastro;
         private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem questoesToolStripMenuItem;
     }
 }

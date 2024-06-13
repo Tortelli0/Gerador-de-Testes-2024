@@ -7,6 +7,10 @@ namespace GeradorDeTestes2024.ModuloQuestao
         public TabelaQuestaoControl()
         {
             InitializeComponent();
+            grid.Columns.AddRange(ObterColunas());
+
+            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridZebrado();
         }
         public void AtualizarRegistros(List<Questao> Questoes)
         {
