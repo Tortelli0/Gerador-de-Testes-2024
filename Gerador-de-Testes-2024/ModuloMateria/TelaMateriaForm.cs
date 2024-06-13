@@ -1,4 +1,5 @@
 ﻿using GeradorDeTestes.WinForm;
+using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
 using System.Diagnostics.Eventing.Reader;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -27,7 +28,7 @@ namespace GeradorDeTestes2024.ModuloMateria
         public TelaMateriaForm(List<Disciplina> disciplinas)
         {
             InitializeComponent();
-
+            this.ConfigurarDialog();
             CarregarComboBox(disciplinas);
         }
 
