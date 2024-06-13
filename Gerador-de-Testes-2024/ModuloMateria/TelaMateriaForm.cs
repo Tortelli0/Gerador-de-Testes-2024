@@ -33,7 +33,7 @@ namespace GeradorDeTestes2024.ModuloMateria
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            string nome = txtNomeMateria.Text;
+            string nome = txtNomeMateria.Text.Trim();
             string serie = "";
             if (radioButtonSerie1.Checked)
                 serie = "1ª Série";

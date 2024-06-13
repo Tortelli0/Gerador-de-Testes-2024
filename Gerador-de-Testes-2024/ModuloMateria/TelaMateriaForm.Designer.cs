@@ -54,6 +54,7 @@
             // 
             // button2
             // 
+            button2.DialogResult = DialogResult.Cancel;
             button2.Location = new Point(279, 275);
             button2.Name = "button2";
             button2.Size = new Size(88, 29);
@@ -98,7 +99,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(48, 171);
+            label4.Location = new Point(51, 176);
             label4.Name = "label4";
             label4.Size = new Size(35, 15);
             label4.TabIndex = 1;
