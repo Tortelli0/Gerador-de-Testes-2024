@@ -43,7 +43,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
             if (disciplina.ExisteDisciplina(disciplinas, disciplina))
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape("Já existe uma Disciplina com este nome!");
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Já existe uma \"Disciplina\" com o nome de: \"{Disciplina.Nome}\"!");
 
                 DialogResult = DialogResult.None;
             }

@@ -27,72 +27,68 @@ namespace GeradorDeTestes2024.ModuloMateria
 
         public override void Adicionar()
         {
-            if (ValidarDisciplinasExistentes())
+            if (!ValidarDisciplinasExistentes())
             {
-                TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
-
-                DialogResult resultado = telaMateria.ShowDialog();
-
-                if (resultado != DialogResult.OK)
-                    return;
-
-                Materia novaMateria = telaMateria.Materia;
-
-                repositorioMateria.Cadastrar(novaMateria);
-
-                CarregarMaterias();
-
-                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novaMateria.Nome}\" foi criado com sucesso!");
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível adicionar uma \"Matéria\" sem ter uma \"Disciplina\"!");
+                return;
             }
 
-            else
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível adicionar uma matéria sem ter uma disciplina!");
-            }
+            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
+
+            DialogResult resultado = telaMateria.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Materia novaMateria = telaMateria.Materia;
+
+            repositorioMateria.Cadastrar(novaMateria);
+
+            CarregarMaterias();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novaMateria.Nome}\" foi criado com sucesso!");                  
         }
 
 
         public override void Editar()
         {
-            if (ValidarDisciplinasExistentes())
+            if (!ValidarDisciplinasExistentes())
             {
-                TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
-
-                int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
-
-                Materia materiaSelecionada = repositorioMateria.SelecionarPorId(idSelecionado);
-
-                if (materiaSelecionada == null)
-                {
-                    MessageBox.Show(
-                        "Não é possível realizar esta ação sem um registro selecionado",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return;
-                }
-
-                telaMateria.Materia = materiaSelecionada;
-
-                DialogResult resultado = telaMateria.ShowDialog();
-
-                if (resultado != DialogResult.OK)
-                    return;
-
-                Materia materiaEditada = telaMateria.Materia;
-
-                repositorioMateria.Editar(materiaSelecionada.Id, materiaEditada);
-
-                CarregarMaterias();
-
-                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{materiaSelecionada.Nome}\" foi editado com sucesso!");
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível editar uma \"Matéria\" sem ter uma disciplina!");
+                return;
             }
 
-            else
+            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
+
+            int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
+
+            Materia materiaSelecionada = repositorioMateria.SelecionarPorId(idSelecionado);
+
+            if (materiaSelecionada == null)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível editar uma matéria sem ter uma disciplina!");
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
             }
+
+            telaMateria.Materia = materiaSelecionada;
+
+            DialogResult resultado = telaMateria.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Materia materiaEditada = telaMateria.Materia;
+
+            repositorioMateria.Editar(materiaSelecionada.Id, materiaEditada);
+
+            CarregarMaterias();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{materiaSelecionada.Nome}\" foi editado com sucesso!");          
         }
 
         public override void Excluir()
