@@ -101,7 +101,7 @@ namespace GeradorDeTestes.WinForm
                 btnDuplicar.ToolTipText = controladorDuplicavel.ToolTipDuplicar;
 
             if (controladorSelecionado is IControladorPDF controladorPDF)
-                btnDuplicar.ToolTipText = controladorPDF.ToolTipPDF;
+                btnPDF.ToolTipText = controladorPDF.ToolTipPDF;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
@@ -127,7 +127,11 @@ namespace GeradorDeTestes.WinForm
         {
             controlador.Excluir();
         }
-
+        private void btnDuplicar_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorDuplicavel controladorDuplicavel)
+                controladorDuplicavel.Duplicar();
+        }
         private void TelaPrincipalForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

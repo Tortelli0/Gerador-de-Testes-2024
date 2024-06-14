@@ -41,7 +41,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
         public override void Adicionar()
         {
-            if (ValidarExisteRegistrosSuficientes())
+            if (!ValidarExisteRegistrosSuficientes())
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível realizar o cadastro de \"Teste\" " +
                     $"sem possuir uma \"Questão\" cadastradas!");
@@ -70,7 +70,40 @@ namespace GeradorDeTestes2024.ModuloTeste
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            Teste TesteSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
+
+            TelaTesteForm telaTeste = new TelaTesteForm(
+                repositorioTeste.SelecionarTodos(),
+                repositorioDisciplina.SelecionarTodos(),
+                repositorioQuestao.SelecionarTodos(),
+                false);
+
+            if (TesteSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaTeste.Teste = TesteSelecionado;
+
+            DialogResult resultado = telaTeste.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Teste TesteEditada = telaTeste.Teste;
+
+            repositorioTeste.Editar(TesteSelecionado.Id, TesteEditada);
+            CarregarTestes();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{TesteEditada.Titulo}\" foi editado com sucesso!");
         }
         public override void Excluir()
         {

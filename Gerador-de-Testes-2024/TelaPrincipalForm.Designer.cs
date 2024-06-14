@@ -33,6 +33,7 @@
             disciplinasMenuItem = new ToolStripMenuItem();
             materiaToolStripMenuItem = new ToolStripMenuItem();
             questoesToolStripMenuItem = new ToolStripMenuItem();
+            testesToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -46,7 +47,6 @@
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            testesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -72,23 +72,30 @@
             // disciplinasMenuItem
             // 
             disciplinasMenuItem.Name = "disciplinasMenuItem";
-            disciplinasMenuItem.Size = new Size(180, 24);
+            disciplinasMenuItem.Size = new Size(149, 24);
             disciplinasMenuItem.Text = "Disciplinas";
             disciplinasMenuItem.Click += DisciplinaToolStripMenuItem_Click;
             // 
             // materiaToolStripMenuItem
             // 
             materiaToolStripMenuItem.Name = "materiaToolStripMenuItem";
-            materiaToolStripMenuItem.Size = new Size(180, 24);
+            materiaToolStripMenuItem.Size = new Size(149, 24);
             materiaToolStripMenuItem.Text = "Matéria";
             materiaToolStripMenuItem.Click += materiaToolStripMenuItem_Click_1;
             // 
             // questoesToolStripMenuItem
             // 
             questoesToolStripMenuItem.Name = "questoesToolStripMenuItem";
-            questoesToolStripMenuItem.Size = new Size(180, 24);
+            questoesToolStripMenuItem.Size = new Size(149, 24);
             questoesToolStripMenuItem.Text = "Questões";
             questoesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
+            // 
+            // testesToolStripMenuItem
+            // 
+            testesToolStripMenuItem.Name = "testesToolStripMenuItem";
+            testesToolStripMenuItem.Size = new Size(149, 24);
+            testesToolStripMenuItem.Text = "Testes";
+            testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -165,6 +172,7 @@
             btnDuplicar.ImageTransparentColor = Color.Magenta;
             btnDuplicar.Name = "btnDuplicar";
             btnDuplicar.Size = new Size(28, 38);
+            btnDuplicar.Click += btnDuplicar_Click;
             // 
             // btnVisualizar
             // 
@@ -205,13 +213,6 @@
             pnlRegistros.Name = "pnlRegistros";
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
-            // 
-            // testesToolStripMenuItem
-            // 
-            testesToolStripMenuItem.Name = "testesToolStripMenuItem";
-            testesToolStripMenuItem.Size = new Size(180, 24);
-            testesToolStripMenuItem.Text = "Testes";
-            testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
             // TelaPrincipalForm
             // 
