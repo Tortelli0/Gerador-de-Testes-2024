@@ -1,6 +1,7 @@
 ﻿
 using GeradorDeTestes.WinForm;
 using GeradorDeTestes2024.Compartilhado;
+using GeradorDeTestes2024.ModuloMateria;
 
 namespace GeradorDeTestes2024.ModuloQuestao
 {
@@ -32,18 +33,18 @@ namespace GeradorDeTestes2024.ModuloQuestao
             }
         }
 
-        public TelaQuestaoForm(List<Questao> questoes)
+        public TelaQuestaoForm(List<Questao> questoes, List<Materia> materias)
         {
             InitializeComponent();
             this.questoes = questoes;
             this.ConfigurarDialog();
-            CarregarComboBox();
+            CarregarComboBox(materias);
         }
 
-        private void CarregarComboBox()
+        private void CarregarComboBox(List<Materia> materias)
         {
-            List<string> materias = new List<string>() { "Adição, 1ª Série", "Subtração, 1ª Série", "Multiplicação, 1ª Série", "Divisão, 1ª Série" };
-            foreach (string m in materias)
+
+            foreach (Materia m in materias)
             {
                 cmbMateria.Items.Add(m);
             }
@@ -93,7 +94,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            string materia = (string)cmbMateria.SelectedItem;
+            Materia materia = (Materia)cmbMateria.SelectedItem;
             string enunciado = txtEnunciado.Text.Trim();
 
             List<Alternativa> alternativas = new List<Alternativa>();

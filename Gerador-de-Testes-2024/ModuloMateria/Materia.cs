@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestes.ConsoleApp.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
+using GeradorDeTestes2024.ModuloQuestao;
 
 namespace GeradorDeTestes2024.ModuloMateria
 {
@@ -8,10 +9,10 @@ namespace GeradorDeTestes2024.ModuloMateria
         public string Nome { get; set; }
         public string Serie { get; set; }
         public Disciplina Disciplina { get; set; }
-
+        public List<Questao> Questoes { get; set; }
         public Materia()
         {
-            
+
         }
 
         public Materia(string nome, string serie, Disciplina disciplina)
@@ -19,6 +20,15 @@ namespace GeradorDeTestes2024.ModuloMateria
             Nome = nome;
             Serie = serie;
             Disciplina = disciplina;
+            Questoes = new List<Questao>();
+        }
+        public Materia(int id, string nome, string serie, Disciplina disciplina)
+        {
+            Id = id;
+            Nome = nome;
+            Serie = serie;
+            Disciplina = disciplina;
+            Questoes = new List<Questao>();
         }
 
         public override List<string> Validar()
@@ -54,6 +64,29 @@ namespace GeradorDeTestes2024.ModuloMateria
                 return true;
 
             return false;
+        }
+
+        public int QuantidadeQuestoes(List<Questao> todasAsQuestoes)
+        {
+            int contador = 0;
+            foreach (Questao q in todasAsQuestoes)
+            {
+                if (q.Materia.Nome == Nome)
+                    contador++;
+            }
+            return contador;
+        }
+
+        internal List<Questao> ListaQuestoes(List<Questao> todasAsQuestoes)
+        {
+            List<Questao> lista = new List<Questao>();
+
+            foreach (Questao q in todasAsQuestoes)
+            {
+                if (q.Materia.Nome == Nome)
+                    lista.Add(q);
+            }
+            return lista;
         }
     }
 }

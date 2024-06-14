@@ -19,6 +19,8 @@ namespace GeradorDeTestes2024.ModuloTeste
             set
             {
                 txtTitulo.Text = value.Titulo;
+                if (duplicar)
+                    txtTitulo.Text = value.Titulo + "- Cópia";
                 cmbDisciplina.SelectedItem = value.Disciplina;
                 if (!duplicar)
                     CarregarListaQuestoes(value.Questoes);
@@ -45,15 +47,15 @@ namespace GeradorDeTestes2024.ModuloTeste
             {
                 numQuestoes.Value = 0;
                 Materia materiaSelecionada = (Materia)cmbMateria.SelectedItem;
-                //numQuestoes.Maximum = materiaSelecionada.QuantidadeQuestoes(todasAsQuestoes);
-                //questoesDisponiveis = materiaSelecionada.ListaQuestoes(todasAsQuestoes);
+                numQuestoes.Maximum = materiaSelecionada.QuantidadeQuestoes(todasAsQuestoes);
+                questoesDisponiveis = materiaSelecionada.ListaQuestoes(todasAsQuestoes);
             }
             else if (checkBoxRecuperacao.Checked)
             {
                 numQuestoes.Value = 0;
                 Disciplina disciplinaSelecionada = (Disciplina)cmbDisciplina.SelectedItem;
-                //numQuestoes.Maximum = disciplinaSelecionada.QuantidadeQuestoes(todasAsQuestoes);
-                //questoesDisponiveis = disciplinaSelecionada.ListaQuestoes(todasAsQuestoes);
+                numQuestoes.Maximum = disciplinaSelecionada.QuantidadeQuestoes(todasAsQuestoes, "serie");
+                questoesDisponiveis = disciplinaSelecionada.ListaQuestoes(todasAsQuestoes, "serie");
             }
         }
 

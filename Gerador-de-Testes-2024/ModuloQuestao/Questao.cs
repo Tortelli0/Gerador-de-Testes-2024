@@ -1,23 +1,33 @@
 ﻿using GeradorDeTestes.ConsoleApp.Compartilhado;
+using GeradorDeTestes2024.ModuloMateria;
+using GeradorDeTestes2024.ModuloTeste;
 
 namespace GeradorDeTestes2024.ModuloQuestao
 {
     public class Questao : EntidadeBase
     {
-        public string Materia { get; set; }
+        public Materia Materia { get; set; }
         public string Enunciado { get; set; }
         public List<Alternativa> Alternativas { get; set; }
-        public string Teste { get; set; }
+        public List<Teste> Testes { get; set; }
         public Questao()
         {
 
         }
-        public Questao(string materia, string enunciado, List<Alternativa> alternativas)
+        public Questao(Materia materia, string enunciado, List<Alternativa> alternativas)
         {
             Materia = materia;
             Enunciado = enunciado;
             Alternativas = alternativas;
-
+            Testes = new List<Teste>();
+        }
+        public Questao(int id, Materia materia, string enunciado, List<Alternativa> alternativas)
+        {
+            Id = id;
+            Materia = materia;
+            Enunciado = enunciado;
+            Alternativas = alternativas;
+            Testes = new List<Teste>();
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)

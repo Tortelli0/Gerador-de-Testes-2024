@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes2024.ModuloMateria;
 
 namespace GeradorDeTestes2024.ModuloQuestao
 {
@@ -7,10 +8,12 @@ namespace GeradorDeTestes2024.ModuloQuestao
     {
         private IRepositorioQuestao repositorioQuestao;
         private TabelaQuestaoControl tabelaQuestao;
+        private IRepositorioMateria repositorioMateria;
 
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao)
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
         {
             this.repositorioQuestao = repositorioQuestao;
+            this.repositorioMateria = repositorioMateria;
             AtualizarRodapeQuantidadeRegistros();
         }
 
@@ -24,7 +27,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         public override void Adicionar()
         {
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos());
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos(), repositorioMateria.SelecionarTodos());
 
             DialogResult resultado = telaQuestao.ShowDialog();
 

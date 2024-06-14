@@ -12,7 +12,6 @@ namespace GeradorDeTestes2024.ModuloTeste
         public Materia Materia { get; set; }
         public string Serie { get; set; }
         public List<Questao> Questoes { get; set; }
-
         public bool Recuperacao { get; set; }
         public Teste()
         {
@@ -21,6 +20,14 @@ namespace GeradorDeTestes2024.ModuloTeste
 
         public Teste(string titulo, Disciplina disciplina, List<Questao> questoes)
         {
+            Titulo = titulo;
+            Serie = "";
+            Disciplina = disciplina;
+            Questoes = questoes;
+        }
+        public Teste(int id, string titulo, Disciplina disciplina, List<Questao> questoes)
+        {
+            Id = id;
             Titulo = titulo;
             Serie = "";
             Disciplina = disciplina;

@@ -151,6 +151,8 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioQuestao.SelecionarTodos(),
                 true);
 
+            telaTeste.Teste = TesteSelecionado;
+
             DialogResult resultado = telaTeste.ShowDialog();
 
             if (resultado != DialogResult.OK)
