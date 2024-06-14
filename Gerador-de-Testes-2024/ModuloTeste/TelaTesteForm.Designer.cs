@@ -38,7 +38,7 @@
             cmbMateria = new ComboBox();
             checkBoxRecuperacao = new CheckBox();
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
+            listQuestoes = new ListBox();
             btnSortear = new Button();
             btnGravar = new Button();
             btnCancelar = new Button();
@@ -111,6 +111,7 @@
             cmbMateria.Name = "cmbMateria";
             cmbMateria.Size = new Size(142, 23);
             cmbMateria.TabIndex = 7;
+            cmbMateria.SelectedIndexChanged += cmbMateria_SelectedIndexChanged;
             // 
             // checkBoxRecuperacao
             // 
@@ -121,11 +122,12 @@
             checkBoxRecuperacao.TabIndex = 8;
             checkBoxRecuperacao.Text = "Prova de Recuperação";
             checkBoxRecuperacao.UseVisualStyleBackColor = true;
+            checkBoxRecuperacao.CheckedChanged += checkBoxRecuperacao_CheckedChanged;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(listQuestoes);
             groupBox1.Controls.Add(btnSortear);
-            groupBox1.Controls.Add(groupBox2);
             groupBox1.Location = new Point(27, 152);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(359, 278);
@@ -133,13 +135,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Questões Selecionadas:";
             // 
-            // groupBox2
+            // listQuestoes
             // 
-            groupBox2.Location = new Point(3, 44);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(353, 231);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
+            listQuestoes.FormattingEnabled = true;
+            listQuestoes.ItemHeight = 15;
+            listQuestoes.Location = new Point(1, 50);
+            listQuestoes.Name = "listQuestoes";
+            listQuestoes.SelectionMode = SelectionMode.None;
+            listQuestoes.Size = new Size(358, 229);
+            listQuestoes.TabIndex = 3;
             // 
             // btnSortear
             // 
@@ -150,6 +154,7 @@
             btnSortear.TabIndex = 2;
             btnSortear.Text = "Sortear Questões";
             btnSortear.UseVisualStyleBackColor = true;
+            btnSortear.Click += btnSortear_Click;
             // 
             // btnGravar
             // 
@@ -160,6 +165,7 @@
             btnGravar.TabIndex = 10;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
@@ -208,9 +214,9 @@
         private ComboBox cmbMateria;
         private CheckBox checkBoxRecuperacao;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
         private Button btnSortear;
         private Button btnGravar;
         private Button btnCancelar;
+        private ListBox listQuestoes;
     }
 }

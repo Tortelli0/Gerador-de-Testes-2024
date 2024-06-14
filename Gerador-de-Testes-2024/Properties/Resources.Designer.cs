@@ -73,6 +73,16 @@ namespace GeradorDeTestes2024.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnCopiar {
+            get {
+                object obj = ResourceManager.GetObject("btnCopiar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnEditar {
             get {
                 object obj = ResourceManager.GetObject("btnEditar", resourceCulture);
@@ -96,6 +106,26 @@ namespace GeradorDeTestes2024.Properties {
         internal static System.Drawing.Bitmap btnFiltrar {
             get {
                 object obj = ResourceManager.GetObject("btnFiltrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnPDF {
+            get {
+                object obj = ResourceManager.GetObject("btnPDF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnVisualizar {
+            get {
+                object obj = ResourceManager.GetObject("btnVisualizar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

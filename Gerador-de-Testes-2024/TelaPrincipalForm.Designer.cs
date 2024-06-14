@@ -40,7 +40,9 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            btnFiltrar = new ToolStripButton();
+            btnDuplicar = new ToolStripButton();
+            btnVisualizar = new ToolStripButton();
+            btnPDF = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
@@ -69,21 +71,21 @@
             // disciplinasMenuItem
             // 
             disciplinasMenuItem.Name = "disciplinasMenuItem";
-            disciplinasMenuItem.Size = new Size(180, 24);
+            disciplinasMenuItem.Size = new Size(149, 24);
             disciplinasMenuItem.Text = "Disciplinas";
             disciplinasMenuItem.Click += DisciplinaToolStripMenuItem_Click;
             // 
             // materiaToolStripMenuItem
             // 
             materiaToolStripMenuItem.Name = "materiaToolStripMenuItem";
-            materiaToolStripMenuItem.Size = new Size(180, 24);
+            materiaToolStripMenuItem.Size = new Size(149, 24);
             materiaToolStripMenuItem.Text = "Matéria";
             materiaToolStripMenuItem.Click += materiaToolStripMenuItem_Click_1;
             // 
             // questoesToolStripMenuItem
             // 
             questoesToolStripMenuItem.Name = "questoesToolStripMenuItem";
-            questoesToolStripMenuItem.Size = new Size(180, 24);
+            questoesToolStripMenuItem.Size = new Size(149, 24);
             questoesToolStripMenuItem.Text = "Questões";
             questoesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
             // 
@@ -105,7 +107,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnFiltrar, toolStripSeparator3, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnDuplicar, btnVisualizar, btnPDF, toolStripSeparator3, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 28);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 41);
@@ -153,16 +155,35 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 41);
             // 
-            // btnFiltrar
+            // btnDuplicar
             // 
-            btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnFiltrar.Enabled = false;
-            btnFiltrar.Image = GeradorDeTestes2024.Properties.Resources.btnFiltrar;
-            btnFiltrar.ImageScaling = ToolStripItemImageScaling.None;
-            btnFiltrar.ImageTransparentColor = Color.Magenta;
-            btnFiltrar.Name = "btnFiltrar";
-            btnFiltrar.Padding = new Padding(5);
-            btnFiltrar.Size = new Size(38, 38);
+            btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnDuplicar.Enabled = false;
+            btnDuplicar.Image = GeradorDeTestes2024.Properties.Resources.btnCopiar;
+            btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
+            btnDuplicar.ImageTransparentColor = Color.Magenta;
+            btnDuplicar.Name = "btnDuplicar";
+            btnDuplicar.Size = new Size(28, 38);
+            // 
+            // btnVisualizar
+            // 
+            btnVisualizar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnVisualizar.Enabled = false;
+            btnVisualizar.Image = GeradorDeTestes2024.Properties.Resources.btnVisualizar;
+            btnVisualizar.ImageScaling = ToolStripItemImageScaling.None;
+            btnVisualizar.ImageTransparentColor = Color.Magenta;
+            btnVisualizar.Name = "btnVisualizar";
+            btnVisualizar.Size = new Size(28, 38);
+            // 
+            // btnPDF
+            // 
+            btnPDF.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnPDF.Enabled = false;
+            btnPDF.Image = GeradorDeTestes2024.Properties.Resources.btnPDF;
+            btnPDF.ImageScaling = ToolStripItemImageScaling.None;
+            btnPDF.ImageTransparentColor = Color.Magenta;
+            btnPDF.Name = "btnPDF";
+            btnPDF.Size = new Size(28, 38);
             // 
             // toolStripSeparator3
             // 
@@ -225,9 +246,11 @@
         private Panel pnlRegistros;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel lblTipoCadastro;
-        private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem questoesToolStripMenuItem;
         private ToolStripMenuItem materiaToolStripMenuItem;
+        private ToolStripButton btnDuplicar;
+        private ToolStripButton btnVisualizar;
+        private ToolStripButton btnPDF;
     }
 }

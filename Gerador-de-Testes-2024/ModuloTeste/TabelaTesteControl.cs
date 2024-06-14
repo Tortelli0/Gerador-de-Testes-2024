@@ -19,10 +19,9 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             foreach (Teste Teste in Questoes)
             {
-                if (Teste.Recuperacao)
-                    grid.Rows.Add(Teste.Id, Teste.Titulo, Teste.Disciplina, recuperacao, Teste.RetornarQuantidadeQuestoes());
-                else
-                    grid.Rows.Add(Teste.Id, Teste.Titulo, Teste.Disciplina, Teste.Materia, Teste.RetornarQuantidadeQuestoes());
+                grid.Rows.Add(Teste.Id, Teste.Titulo, Teste.Disciplina,
+                    Teste.Recuperacao ? recuperacao : Teste.Materia,
+                    Teste.RetornarQuantidadeQuestoes());
             }
         }
 

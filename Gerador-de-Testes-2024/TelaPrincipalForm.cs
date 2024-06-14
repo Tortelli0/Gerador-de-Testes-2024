@@ -1,7 +1,7 @@
-using GeradorDeTestes2024.ModuloQuestao;
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
 using GeradorDeTestes2024.ModuloMateria;
+using GeradorDeTestes2024.ModuloQuestao;
 
 namespace GeradorDeTestes.WinForm
 {
@@ -88,7 +88,6 @@ namespace GeradorDeTestes.WinForm
 
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagem);
-            //AtualizarRodape($"Visualizando {} registros.");
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -104,11 +103,6 @@ namespace GeradorDeTestes.WinForm
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             controlador.Excluir();
-        }
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            if (controlador is IControladorFiltravel controladorFiltravel)
-                controladorFiltravel.Filtrar();
         }
 
         private void TelaPrincipalForm_FormClosed(object sender, FormClosedEventArgs e)

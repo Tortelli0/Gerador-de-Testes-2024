@@ -1,9 +1,10 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes2024.Compartilhado;
 
 namespace GeradorDeTestes2024.ModuloTeste
 {
-    internal class ControladorTeste : ControladorBase
+    internal class ControladorTeste : ControladorBase, IControladorDuplicavel, IControladorVisualizavel, IControladorPDF
     {
         private IRepositorioTeste repositorioTeste;
         private TabelaTesteControl tabelaTeste;
@@ -23,9 +24,15 @@ namespace GeradorDeTestes2024.ModuloTeste
 
         public override string ToolTipExcluir => "Excluir um teste existente";
 
+        public string ToolTipDuplicar => "Duplicar um teste existente";
+
+        public string ToolTipVisualizar => "Visualizar os detalhes do teste selecionado";
+
+        public string ToolTipPDF => "Gerar arquivo PDF do teste selecionado";
+
         public override void Adicionar()
         {
-            throw new NotImplementedException();
+
         }
 
         public override void Editar()
@@ -37,7 +44,20 @@ namespace GeradorDeTestes2024.ModuloTeste
         {
             throw new NotImplementedException();
         }
+        public void Duplicar()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Visualizar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GerarPDF()
+        {
+            throw new NotImplementedException();
+        }
         public override UserControl ObterListagem()
         {
             if (tabelaTeste == null)
