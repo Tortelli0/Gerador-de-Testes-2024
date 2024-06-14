@@ -29,7 +29,7 @@ namespace GeradorDeTestes2024.ModuloMateria
         {
             if (!ValidarDisciplinasExistentes())
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível adicionar uma matéria sem ter uma disciplina!");
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível adicionar uma \"Matéria\" sem ter uma \"Disciplina\"!");
                 return;
             }
 
@@ -54,7 +54,7 @@ namespace GeradorDeTestes2024.ModuloMateria
         {
             if (!ValidarDisciplinasExistentes())
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível editar uma matéria sem ter uma disciplina!");
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível editar uma \"Matéria\" sem ter uma disciplina!");
                 return;
             }
 
