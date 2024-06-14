@@ -1,7 +1,9 @@
-using GeradorDeTestes2024.ModuloQuestao;
 using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
 using GeradorDeTestes2024.ModuloMateria;
+using GeradorDeTestes2024.ModuloQuestao;
+using GeradorDeTestes2024.ModuloTeste;
 
 namespace GeradorDeTestes.WinForm
 {
@@ -12,6 +14,7 @@ namespace GeradorDeTestes.WinForm
         IRepositorioDisciplina repositorioDisciplina;
         IRepositorioMateria repositorioMateria;
         IRepositorioQuestao repositorioQuestao;
+        IRepositorioTeste repositorioTeste;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -23,9 +26,10 @@ namespace GeradorDeTestes.WinForm
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            repositorioQuestao = new RepositorioQuestao(contexto);
             repositorioDisciplina = new RepositorioDisciplina(contexto);
             repositorioMateria = new RepositorioMateria(contexto);
+            repositorioQuestao = new RepositorioQuestao(contexto);
+            repositorioTeste = new RepositorioTeste(contexto);
         }
 
         public void AtualizarRodape(string texto)
@@ -56,6 +60,13 @@ namespace GeradorDeTestes.WinForm
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
         }
+        private void testesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioQuestao, repositorioMateria);
+
+            lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
+            ConfigurarTelaPrincipal(controlador);
+        }
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -70,6 +81,10 @@ namespace GeradorDeTestes.WinForm
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
+            btnDuplicar.Enabled = controladorSelecionado is IControladorDuplicavel;
+            btnVisualizar.Enabled = controladorSelecionado is IControladorVisualizavel;
+            btnPDF.Enabled = controladorSelecionado is IControladorPDF;
+
             ConfigurarToolTips(controladorSelecionado);
         }
 
@@ -79,6 +94,14 @@ namespace GeradorDeTestes.WinForm
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
 
+            if (controladorSelecionado is IControladorVisualizavel controladorVisualizavel)
+                btnVisualizar.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
+
+            if (controladorSelecionado is IControladorDuplicavel controladorDuplicavel)
+                btnDuplicar.ToolTipText = controladorDuplicavel.ToolTipDuplicar;
+
+            if (controladorSelecionado is IControladorPDF controladorPDF)
+                btnPDF.ToolTipText = controladorPDF.ToolTipPDF;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
@@ -88,7 +111,6 @@ namespace GeradorDeTestes.WinForm
 
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagem);
-            //AtualizarRodape($"Visualizando {} registros.");
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -105,15 +127,16 @@ namespace GeradorDeTestes.WinForm
         {
             controlador.Excluir();
         }
-        private void btnFiltrar_Click(object sender, EventArgs e)
+        private void btnDuplicar_Click(object sender, EventArgs e)
         {
-            if (controlador is IControladorFiltravel controladorFiltravel)
-                controladorFiltravel.Filtrar();
+            if (controlador is IControladorDuplicavel controladorDuplicavel)
+                controladorDuplicavel.Duplicar();
         }
-
         private void TelaPrincipalForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
+
     }
 }
