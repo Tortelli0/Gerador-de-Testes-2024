@@ -22,6 +22,7 @@ namespace GeradorDeTestes2024.ModuloTeste
         public Teste(string titulo, Disciplina disciplina, List<Questao> questoes)
         {
             Titulo = titulo;
+            Serie = "";
             Disciplina = disciplina;
             Questoes = questoes;
         }

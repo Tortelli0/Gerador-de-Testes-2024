@@ -20,7 +20,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             {
                 txtTitulo.Text = value.Titulo;
                 cmbDisciplina.SelectedItem = value.Disciplina;
-                if (duplicar)
+                if (!duplicar)
                     CarregarListaQuestoes(value.Questoes);
                 if (value.Recuperacao)
                 {
@@ -115,7 +115,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             if (teste.TituloTesteIgual(testes))
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape("Já existe um \"Teste\" com esse \"Titulo\"");
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Já existe um \"Teste\" com o título de: \"{teste.Titulo}\"");
                 DialogResult = DialogResult.None;
             }
 
@@ -134,7 +134,6 @@ namespace GeradorDeTestes2024.ModuloTeste
             List<Questao> copiaQuestoes = new List<Questao>(questoesDisponiveis);
 
             Random rand = new Random();
-
 
             while (copiaQuestoes.Count > 0)
             {
