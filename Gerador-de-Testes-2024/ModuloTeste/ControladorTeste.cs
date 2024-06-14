@@ -1,6 +1,8 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.Compartilhado;
+using GeradorDeTestes2024.ModuloDisciplina;
+using GeradorDeTestes2024.ModuloQuestao;
 
 namespace GeradorDeTestes2024.ModuloTeste
 {
@@ -8,11 +10,15 @@ namespace GeradorDeTestes2024.ModuloTeste
     {
         private IRepositorioTeste repositorioTeste;
         private TabelaTesteControl tabelaTeste;
+        private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioQuestao repositorioQuestao;
 
-        public ControladorTeste(IRepositorioTeste repositorioTeste)
+        public ControladorTeste(IRepositorioTeste repositorioTeste, IRepositorioDisciplina repositorioDisciplina,
+            IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioTeste = repositorioTeste;
-
+            this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioQuestao = repositorioQuestao;
             AtualizarRodapeQuantidadeRegistros();
         }
 
@@ -32,7 +38,24 @@ namespace GeradorDeTestes2024.ModuloTeste
 
         public override void Adicionar()
         {
+            TelaTesteForm telaTeste = new TelaTesteForm(
+                repositorioTeste.SelecionarTodos(),
+                repositorioDisciplina.SelecionarTodos(),
+                repositorioQuestao.SelecionarTodos(),
+                false);
 
+            DialogResult resultado = telaTeste.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Teste novoTeste = telaTeste.Teste;
+
+            repositorioTeste.Cadastrar(novoTeste);
+
+            CarregarTestes();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novoTeste.Titulo}\" foi criado com sucesso!");
         }
 
         public override void Editar()
@@ -69,7 +92,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             return tabelaTeste;
         }
-        private void CarregarQuestoes()
+        private void CarregarTestes()
         {
             List<Teste> Testes = repositorioTeste.SelecionarTodos();
 
