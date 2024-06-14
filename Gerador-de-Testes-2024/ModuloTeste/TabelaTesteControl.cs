@@ -1,0 +1,45 @@
+﻿using GeradorDeTestes.WinForm.Compartilhado;
+
+namespace GeradorDeTestes2024.ModuloTeste
+{
+    public partial class TabelaTesteControl : UserControl
+    {
+        public TabelaTesteControl()
+        {
+            InitializeComponent();
+            grid.Columns.AddRange(ObterColunas());
+
+            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridZebrado();
+        }
+        public void AtualizarRegistros(List<Teste> Questoes)
+        {
+            string recuperacao = "Recuperação";
+            grid.Rows.Clear();
+
+            foreach (Teste Teste in Questoes)
+            {
+                if (Teste.Recuperacao)
+                    grid.Rows.Add(Teste.Id, Teste.Titulo, Teste.Disciplina, recuperacao, Teste.RetornarQuantidadeQuestoes());
+                else
+                    grid.Rows.Add(Teste.Id, Teste.Titulo, Teste.Disciplina, Teste.Materia, Teste.RetornarQuantidadeQuestoes());
+            }
+        }
+
+        public int ObterRegistroSelecionado()
+        {
+            return grid.SelecionarId();
+        }
+        private DataGridViewColumn[] ObterColunas()
+        {
+            return new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Titulo", HeaderText = "Título" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Disciplina", HeaderText = "Disciplina" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Materia", HeaderText = "Matéria" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "QtdQuestoes", HeaderText = "Quantidade de Questões" }
+            };
+        }
+    }
+}
