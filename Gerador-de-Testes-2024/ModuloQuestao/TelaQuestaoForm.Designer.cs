@@ -59,7 +59,7 @@
             cmbMateria.Location = new Point(84, 24);
             cmbMateria.Name = "cmbMateria";
             cmbMateria.Size = new Size(159, 23);
-            cmbMateria.TabIndex = 1;
+            cmbMateria.TabIndex = 0;
             // 
             // label2
             // 
@@ -76,7 +76,7 @@
             txtEnunciado.Multiline = true;
             txtEnunciado.Name = "txtEnunciado";
             txtEnunciado.Size = new Size(289, 70);
-            txtEnunciado.TabIndex = 2;
+            txtEnunciado.TabIndex = 1;
             // 
             // label3
             // 
@@ -93,14 +93,14 @@
             txtResposta.Multiline = true;
             txtResposta.Name = "txtResposta";
             txtResposta.Size = new Size(205, 37);
-            txtResposta.TabIndex = 3;
+            txtResposta.TabIndex = 2;
             // 
             // btnAdicionar
             // 
             btnAdicionar.Location = new Point(295, 147);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(78, 37);
-            btnAdicionar.TabIndex = 4;
+            btnAdicionar.TabIndex = 3;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
             btnAdicionar.Click += btnAdicionar_Click;
@@ -112,7 +112,7 @@
             groupBox1.Location = new Point(12, 199);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(361, 208);
-            groupBox1.TabIndex = 7;
+            groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Alternativas:";
             // 
@@ -121,7 +121,7 @@
             btnRemover.Location = new Point(280, 22);
             btnRemover.Name = "btnRemover";
             btnRemover.Size = new Size(75, 23);
-            btnRemover.TabIndex = 6;
+            btnRemover.TabIndex = 5;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = true;
             btnRemover.Click += btnRemover_Click;
@@ -133,7 +133,7 @@
             listAlternativas.Name = "listAlternativas";
             listAlternativas.Size = new Size(346, 148);
             listAlternativas.Sorted = true;
-            listAlternativas.TabIndex = 5;
+            listAlternativas.TabIndex = 4;
             // 
             // button3
             // 
@@ -141,7 +141,7 @@
             button3.Location = new Point(298, 413);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
-            button3.TabIndex = 8;
+            button3.TabIndex = 7;
             button3.Text = "Cancelar";
             button3.UseVisualStyleBackColor = true;
             // 
@@ -151,7 +151,7 @@
             btnGravar.Location = new Point(214, 413);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(75, 23);
-            btnGravar.TabIndex = 7;
+            btnGravar.TabIndex = 6;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;

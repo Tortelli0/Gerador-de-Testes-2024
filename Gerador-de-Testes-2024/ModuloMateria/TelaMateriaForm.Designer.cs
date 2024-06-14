@@ -47,7 +47,7 @@
             btnGravar.Location = new Point(146, 226);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(88, 29);
-            btnGravar.TabIndex = 2;
+            btnGravar.TabIndex = 4;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -58,7 +58,7 @@
             button2.Location = new Point(242, 226);
             button2.Name = "button2";
             button2.Size = new Size(88, 29);
-            button2.TabIndex = 2;
+            button2.TabIndex = 5;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
             // 
@@ -94,7 +94,7 @@
             comboBoxMateriaDisciplina.Location = new Point(92, 121);
             comboBoxMateriaDisciplina.Name = "comboBoxMateriaDisciplina";
             comboBoxMateriaDisciplina.Size = new Size(106, 23);
-            comboBoxMateriaDisciplina.TabIndex = 3;
+            comboBoxMateriaDisciplina.TabIndex = 1;
             // 
             // label4
             // 
@@ -111,7 +111,7 @@
             radioButtonSerie2.Location = new Point(48, 22);
             radioButtonSerie2.Name = "radioButtonSerie2";
             radioButtonSerie2.Size = new Size(36, 19);
-            radioButtonSerie2.TabIndex = 4;
+            radioButtonSerie2.TabIndex = 3;
             radioButtonSerie2.TabStop = true;
             radioButtonSerie2.Text = "2ª";
             radioButtonSerie2.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             radioButtonSerie1.Location = new Point(6, 22);
             radioButtonSerie1.Name = "radioButtonSerie1";
             radioButtonSerie1.Size = new Size(36, 19);
-            radioButtonSerie1.TabIndex = 4;
+            radioButtonSerie1.TabIndex = 2;
             radioButtonSerie1.TabStop = true;
             radioButtonSerie1.Text = "1ª";
             radioButtonSerie1.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             groupBoxMateria.Location = new Point(92, 152);
             groupBoxMateria.Name = "groupBoxMateria";
             groupBoxMateria.Size = new Size(85, 54);
-            groupBoxMateria.TabIndex = 5;
+            groupBoxMateria.TabIndex = 2;
             groupBoxMateria.TabStop = false;
             // 
             // TelaMateriaForm
