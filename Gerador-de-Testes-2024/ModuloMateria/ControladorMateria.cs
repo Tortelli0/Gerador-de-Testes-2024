@@ -27,35 +27,36 @@ namespace GeradorDeTestes2024.ModuloMateria
 
         public override void Adicionar()
         {
-            if (ValidarDisciplinasExistentes())
-            {
-                TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
-
-                DialogResult resultado = telaMateria.ShowDialog();
-
-                if (resultado != DialogResult.OK)
-                    return;
-
-                Materia novaMateria = telaMateria.Materia;
-
-                repositorioMateria.Cadastrar(novaMateria);
-
-                CarregarMaterias();
-
-                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novaMateria.Nome}\" foi criado com sucesso!");
-            }
-
-            else
+            if (!ValidarDisciplinasExistentes())
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível adicionar uma matéria sem ter uma disciplina!");
+                return;
             }
+
+            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
+
+            DialogResult resultado = telaMateria.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Materia novaMateria = telaMateria.Materia;
+
+            repositorioMateria.Cadastrar(novaMateria);
+
+            CarregarMaterias();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novaMateria.Nome}\" foi criado com sucesso!");                  
         }
 
 
         public override void Editar()
         {
-            if (ValidarDisciplinasExistentes())
+            if (!ValidarDisciplinasExistentes())
             {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível editar uma matéria sem ter uma disciplina!");
+                return;
+            }
                 TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
 
                 int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
@@ -86,13 +87,7 @@ namespace GeradorDeTestes2024.ModuloMateria
 
                 CarregarMaterias();
 
-                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{materiaSelecionada.Nome}\" foi editado com sucesso!");
-            }
-
-            else
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível editar uma matéria sem ter uma disciplina!");
-            }
+                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{materiaSelecionada.Nome}\" foi editado com sucesso!");          
         }
 
         public override void Excluir()
