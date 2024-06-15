@@ -40,6 +40,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
                 cmbMateria.SelectedItem = value.Materia;
 
+                numQuestoes.Maximum = value.RetornarQuantidadeQuestoes();
                 numQuestoes.Value = value.RetornarQuantidadeQuestoes();
 
                 if (value.Recuperacao)
@@ -207,6 +208,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             if (!checkBoxRecuperacao.Checked)
             {
                 disciplina = (Disciplina)cmbDisciplina.SelectedItem;
+                cmbMateria.Items.Clear();
                 foreach (Materia m in disciplina.Materias)
                 {
                     cmbMateria.Items.Add(m);
