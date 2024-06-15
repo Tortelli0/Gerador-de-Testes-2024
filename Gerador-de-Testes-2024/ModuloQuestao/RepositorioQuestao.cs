@@ -56,8 +56,15 @@ namespace GeradorDeTestes2024.ModuloQuestao
         {
             Questao questao = SelecionarPorId(id);
 
+            List<Questao> questoes = new List<Questao>();
             Materia materia = contexto.Materias.Find(m => m.Id == questao.Materia.Id);
-            materia.Questoes.Remove(questao);
+            foreach (Questao q in materia.Questoes)
+            {
+                if (q.Id != questao.Id)
+                    questoes.Add(q);
+            }
+            materia.Questoes.Clear();
+            materia.Questoes = questoes;
 
             return base.Excluir(id);
         }
