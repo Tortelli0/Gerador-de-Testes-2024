@@ -61,6 +61,12 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 return;
             }
             string descricao = txtResposta.Text.Trim();
+
+            if (string.IsNullOrEmpty(descricao))
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível adicionar uma alternativa vazia.");
+                return;
+            }
             alternativa = new Alternativa(descricao);
             if (ValidarAlternativaIgual(alternativa))
                 return;
