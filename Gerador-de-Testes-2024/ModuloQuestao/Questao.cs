@@ -49,7 +49,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 erros.Add("Deve haver ao menos duas alternativas.");
 
             if (Alternativas.Count > 4)
-                erros.Add("Deve haver menos de quatro alternativas.");
+                erros.Add("Deve haver menos de cinco alternativas.");
 
             if (QuantidadeRespostaCorreta() == 0)
                 erros.Add("Deve haver ao menos uma resposta correta entre as alternativas.");
