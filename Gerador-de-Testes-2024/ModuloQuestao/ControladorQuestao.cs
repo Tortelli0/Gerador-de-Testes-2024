@@ -70,7 +70,9 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
             Questao QuestaoEditada = telaQuestao.Questao;
 
+            repositorioMateria.AtualizarDependencia(QuestaoSelecionado, QuestaoEditada);
             repositorioQuestao.Editar(QuestaoSelecionado.Id, QuestaoEditada);
+
             CarregarQuestoes();
 
             TelaPrincipalForm

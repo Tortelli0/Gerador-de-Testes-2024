@@ -85,6 +85,7 @@ namespace GeradorDeTestes2024.ModuloMateria
 
             Materia materiaEditada = telaMateria.Materia;
 
+            repositorioDisciplina.AtualizarDependenciaMateria(materiaSelecionada, materiaEditada);
             repositorioMateria.Editar(materiaSelecionada.Id, materiaEditada);
 
             CarregarMaterias();

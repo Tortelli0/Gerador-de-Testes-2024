@@ -98,14 +98,16 @@ namespace GeradorDeTestes2024.ModuloTeste
             if (resultado != DialogResult.OK)
                 return;
 
-            Teste TesteEditada = telaTeste.Teste;
+            Teste TesteEditado = telaTeste.Teste;
 
-            repositorioTeste.Editar(TesteSelecionado.Id, TesteEditada);
+            repositorioDisciplina.AtualizarDependenciaTeste(TesteSelecionado, TesteEditado);
+            repositorioQuestao.AtualizarDependencia(TesteSelecionado, TesteEditado);
+            repositorioTeste.Editar(TesteSelecionado.Id, TesteEditado);
             CarregarTestes();
 
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape($"O registro \"{TesteEditada.Titulo}\" foi editado com sucesso!");
+                .AtualizarRodape($"O registro \"{TesteEditado.Titulo}\" foi editado com sucesso!");
         }
         public override void Excluir()
         {
@@ -163,6 +165,8 @@ namespace GeradorDeTestes2024.ModuloTeste
             Teste novoTeste = telaTeste.Teste;
 
             repositorioTeste.Cadastrar(novoTeste);
+            repositorioDisciplina.AdicionarDependenciaTeste(novoTeste);
+            repositorioQuestao.AdicionarDependencia(novoTeste);
 
             CarregarTestes();
 

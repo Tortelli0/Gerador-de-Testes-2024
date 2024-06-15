@@ -23,6 +23,35 @@ namespace GeradorDeTestes2024.ModuloQuestao
             }
         }
 
+        public void AtualizarDependencia(Teste testeSelecionado, Teste testeEditado)
+        {
+            Questao questao = null;
+            List<Teste> testes = new List<Teste>();
+
+            foreach (Questao quest in contexto.Questoes)
+            {
+                if (quest.Testes.Find(q => q.Materia.Id == testeSelecionado.Materia.Id) != null)
+                    questao = quest;
+
+            }
+            foreach (Teste t in questao.Testes)
+            {
+                if (t.Id != testeSelecionado.Id)
+                {
+                    testes.Add(t);
+                }
+            }
+            questao.Testes.Clear();
+            questao.Testes = testes;
+
+            List<Questao> questoes = contexto.Questoes.FindAll(q => testeEditado.Questoes.Contains(q));
+
+            foreach (Questao q in questoes)
+            {
+                q.Testes.Add(testeEditado);
+            }
+        }
+
         public override bool Excluir(int id)
         {
             Questao questao = SelecionarPorId(id);

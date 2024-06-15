@@ -19,6 +19,31 @@ namespace GeradorDeTestes2024.ModuloMateria
             Editar(materia.Id, materia);
         }
 
+        public void AtualizarDependencia(Questao questaoSelecionado, Questao questaoEditada)
+        {
+            Materia materia = null;
+            List<Questao> questoes = new List<Questao>();
+
+            foreach (Materia mat in contexto.Materias)
+            {
+                if (mat.Questoes.Find(q => q.Materia.Id == questaoSelecionado.Materia.Id) != null)
+                    materia = mat;
+
+            }
+            foreach (Questao q in materia.Questoes)
+            {
+                if (q.Id != questaoSelecionado.Id)
+                {
+                    questoes.Add(q);
+                }
+            }
+            materia.Questoes.Clear();
+            materia.Questoes = questoes;
+
+            materia = contexto.Materias.Find(i => i == questaoEditada.Materia);
+            materia.Questoes.Add(questaoEditada);
+        }
+
         public override bool Excluir(int id)
         {
             Materia materia = SelecionarPorId(id);

@@ -5,6 +5,7 @@ namespace GeradorDeTestes2024.ModuloMateria
     public interface IRepositorioMateria
     {
         void AdicionarDependencia(Questao novoQuestao);
+        void AtualizarDependencia(Questao questaoSelecionado, Questao questaoEditada);
         void Cadastrar(Materia novaMateria);
         bool Editar(int id, Materia materiaEditada);
         bool Excluir(int id);

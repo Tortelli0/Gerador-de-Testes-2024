@@ -107,7 +107,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 questoesSelecionadas.Add(q);
             }
 
-            if (id != -1)
+            if (id != -1 && !duplicar)
                 teste = new Teste(id, titulo, disciplina, questoesSelecionadas);
             else
                 teste = new Teste(titulo, disciplina, questoesSelecionadas);

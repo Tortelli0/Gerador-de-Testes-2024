@@ -7,6 +7,8 @@ namespace GeradorDeTestes2024.ModuloDisciplina
     {
         void AdicionarDependenciaMateria(Materia novaMateria);
         void AdicionarDependenciaTeste(Teste novoTeste);
+        void AtualizarDependenciaMateria(Materia materiaSelecionada, Materia materiaEditada);
+        void AtualizarDependenciaTeste(Teste testeSelecionado, Teste testeEditado);
         void Cadastrar(Disciplina novaDisciplina);
         bool Editar(int id, Disciplina disciplinaEditada);
         bool Excluir(int id);
