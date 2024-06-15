@@ -61,6 +61,8 @@ namespace GeradorDeTestes2024.ModuloTeste
             Teste novoTeste = telaTeste.Teste;
 
             repositorioTeste.Cadastrar(novoTeste);
+            repositorioDisciplina.AdicionarDependenciaTeste(novoTeste);
+            repositorioQuestao.AdicionarDependencia(novoTeste);
 
             CarregarTestes();
 

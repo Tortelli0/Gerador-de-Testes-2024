@@ -171,7 +171,8 @@
             btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
             btnDuplicar.ImageTransparentColor = Color.Magenta;
             btnDuplicar.Name = "btnDuplicar";
-            btnDuplicar.Size = new Size(28, 38);
+            btnDuplicar.Padding = new Padding(5);
+            btnDuplicar.Size = new Size(38, 38);
             btnDuplicar.Click += btnDuplicar_Click;
             // 
             // btnVisualizar
@@ -182,7 +183,8 @@
             btnVisualizar.ImageScaling = ToolStripItemImageScaling.None;
             btnVisualizar.ImageTransparentColor = Color.Magenta;
             btnVisualizar.Name = "btnVisualizar";
-            btnVisualizar.Size = new Size(28, 38);
+            btnVisualizar.Padding = new Padding(5);
+            btnVisualizar.Size = new Size(38, 38);
             // 
             // btnPDF
             // 
@@ -192,7 +194,8 @@
             btnPDF.ImageScaling = ToolStripItemImageScaling.None;
             btnPDF.ImageTransparentColor = Color.Magenta;
             btnPDF.Name = "btnPDF";
-            btnPDF.Size = new Size(28, 38);
+            btnPDF.Padding = new Padding(5);
+            btnPDF.Size = new Size(38, 38);
             // 
             // toolStripSeparator3
             // 

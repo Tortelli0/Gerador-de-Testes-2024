@@ -43,10 +43,11 @@ namespace GeradorDeTestes2024.ModuloMateria
             Materia novaMateria = telaMateria.Materia;
 
             repositorioMateria.Cadastrar(novaMateria);
+            repositorioDisciplina.AdicionarDependenciaMateria(novaMateria);
 
             CarregarMaterias();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novaMateria.Nome}\" foi criado com sucesso!");                  
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novaMateria.Nome}\" foi criado com sucesso!");
         }
 
 
@@ -88,7 +89,7 @@ namespace GeradorDeTestes2024.ModuloMateria
 
             CarregarMaterias();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{materiaSelecionada.Nome}\" foi editado com sucesso!");          
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{materiaSelecionada.Nome}\" foi editado com sucesso!");
         }
 
         public override void Excluir()

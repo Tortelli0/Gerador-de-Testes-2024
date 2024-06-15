@@ -37,6 +37,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
             Questao novoQuestao = telaQuestao.Questao;
 
             repositorioQuestao.Cadastrar(novoQuestao);
+            repositorioMateria.AdicionarDependencia(novoQuestao);
 
             CarregarQuestoes();
 
@@ -47,7 +48,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
         {
             Questao QuestaoSelecionado = repositorioQuestao.SelecionarPorId(tabelaQuestao.ObterRegistroSelecionado());
 
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos());
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos(), repositorioMateria.SelecionarTodos());
 
             if (QuestaoSelecionado == null)
             {
@@ -91,7 +92,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 return;
             }
 
-            if (QuestaoSelecionado.Teste != null)
+            if (QuestaoSelecionado.Testes != null)
             {
                 MessageBox.Show(
                     "A questão esta relacionada a um teste, não é possível exclui-la",

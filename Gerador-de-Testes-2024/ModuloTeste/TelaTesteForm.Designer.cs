@@ -82,11 +82,13 @@
             // 
             // cmbDisciplina
             // 
+            cmbDisciplina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDisciplina.FormattingEnabled = true;
             cmbDisciplina.Location = new Point(85, 65);
             cmbDisciplina.Name = "cmbDisciplina";
             cmbDisciplina.Size = new Size(142, 23);
             cmbDisciplina.TabIndex = 4;
+            cmbDisciplina.SelectedIndexChanged += cmbDisciplina_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -106,6 +108,7 @@
             // 
             // cmbMateria
             // 
+            cmbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMateria.FormattingEnabled = true;
             cmbMateria.Location = new Point(85, 100);
             cmbMateria.Name = "cmbMateria";

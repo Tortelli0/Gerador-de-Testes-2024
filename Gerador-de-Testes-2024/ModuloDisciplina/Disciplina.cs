@@ -54,25 +54,25 @@ namespace GeradorDeTestes2024.ModuloDisciplina
             return $"{Nome}";
         }
 
-        internal decimal QuantidadeQuestoes(List<Questao> todasAsQuestoes, string serie)
+        internal decimal QuantidadeQuestoes(string serie)
         {
             int contador = 0;
-            foreach (Questao q in todasAsQuestoes)
+            foreach (Materia m in Materias)
             {
-                if (q.Materia.Disciplina.Nome == Nome && q.Materia.Serie == serie)
-                    contador++;
+                if (m.Serie == serie)
+                    contador = m.QuantidadeQuestoes();
             }
             return contador;
         }
 
-        internal List<Questao> ListaQuestoes(List<Questao> todasAsQuestoes, string serie)
+        internal List<Questao> ListaQuestoes(string serie)
         {
             List<Questao> lista = new List<Questao>();
 
-            foreach (Questao q in todasAsQuestoes)
+            foreach (Materia m in Materias)
             {
-                if (q.Materia.Disciplina.Nome == Nome && q.Materia.Serie == serie)
-                    lista.Add(q);
+                if (m.Serie == serie)
+                    lista.AddRange(m.Questoes);
             }
             return lista;
         }

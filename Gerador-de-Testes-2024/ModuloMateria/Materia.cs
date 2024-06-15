@@ -55,7 +55,7 @@ namespace GeradorDeTestes2024.ModuloMateria
 
         public override string ToString()
         {
-            return $"{Nome}, {Serie}, {Disciplina}";
+            return $"{Nome}, {Serie}";
         }
 
         public bool PrimeiraSerieMarcada()
@@ -66,27 +66,9 @@ namespace GeradorDeTestes2024.ModuloMateria
             return false;
         }
 
-        public int QuantidadeQuestoes(List<Questao> todasAsQuestoes)
+        public int QuantidadeQuestoes()
         {
-            int contador = 0;
-            foreach (Questao q in todasAsQuestoes)
-            {
-                if (q.Materia.Nome == Nome)
-                    contador++;
-            }
-            return contador;
-        }
-
-        internal List<Questao> ListaQuestoes(List<Questao> todasAsQuestoes)
-        {
-            List<Questao> lista = new List<Questao>();
-
-            foreach (Questao q in todasAsQuestoes)
-            {
-                if (q.Materia.Nome == Nome)
-                    lista.Add(q);
-            }
-            return lista;
+            return Questoes.Count;
         }
     }
 }

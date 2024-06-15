@@ -9,6 +9,7 @@ namespace GeradorDeTestes2024.ModuloTeste
     public partial class TelaTesteForm : Form
     {
         private bool duplicar;
+        private Disciplina disciplina;
         private Teste teste;
         private List<Teste> testes;
         private List<Questao> todasAsQuestoes;
@@ -19,11 +20,15 @@ namespace GeradorDeTestes2024.ModuloTeste
             set
             {
                 txtTitulo.Text = value.Titulo;
+
                 if (duplicar)
                     txtTitulo.Text = value.Titulo + "- Cópia";
+
                 cmbDisciplina.SelectedItem = value.Disciplina;
+
                 if (!duplicar)
                     CarregarListaQuestoes(value.Questoes);
+
                 if (value.Recuperacao)
                 {
                     cmbMateria.Enabled = false;
@@ -47,15 +52,15 @@ namespace GeradorDeTestes2024.ModuloTeste
             {
                 numQuestoes.Value = 0;
                 Materia materiaSelecionada = (Materia)cmbMateria.SelectedItem;
-                numQuestoes.Maximum = materiaSelecionada.QuantidadeQuestoes(todasAsQuestoes);
-                questoesDisponiveis = materiaSelecionada.ListaQuestoes(todasAsQuestoes);
+                numQuestoes.Maximum = materiaSelecionada.QuantidadeQuestoes();
+                questoesDisponiveis = materiaSelecionada.Questoes;
             }
             else if (checkBoxRecuperacao.Checked)
             {
                 numQuestoes.Value = 0;
                 Disciplina disciplinaSelecionada = (Disciplina)cmbDisciplina.SelectedItem;
-                numQuestoes.Maximum = disciplinaSelecionada.QuantidadeQuestoes(todasAsQuestoes, "serie");
-                questoesDisponiveis = disciplinaSelecionada.ListaQuestoes(todasAsQuestoes, "serie");
+                numQuestoes.Maximum = disciplinaSelecionada.QuantidadeQuestoes("serie");
+                questoesDisponiveis = disciplinaSelecionada.ListaQuestoes("serie");
             }
         }
 
@@ -78,6 +83,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             SortearQuestoes(questoesSorteadas);
 
+            listQuestoes.Items.Clear();
             foreach (Questao q in questoesSorteadas)
             {
                 listQuestoes.Items.Add(q);
@@ -124,12 +130,12 @@ namespace GeradorDeTestes2024.ModuloTeste
         }
         private void CarregarInformacoes(List<Disciplina> disciplinas)
         {
-            foreach (Disciplina d in disciplinas)
+            numQuestoes.Maximum = 0;
+            foreach (Disciplina disciplina in disciplinas)
             {
-                cmbDisciplina.Items.Add(d);
-                //cmbMateria.Items.Add(d.Materias);
-                cmbMateria.SelectedIndex = 0;
+                cmbDisciplina.Items.Add(disciplina);
             }
+            cmbDisciplina.SelectedIndex = 0;
         }
         private void SortearQuestoes(List<Questao> questoesSorteadas)
         {
@@ -137,7 +143,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             Random rand = new Random();
 
-            while (copiaQuestoes.Count > 0)
+            while (questoesSorteadas.Count < numQuestoes.Value)
             {
                 int index = rand.Next(copiaQuestoes.Count);
                 questoesSorteadas.Add(copiaQuestoes[index]);
@@ -160,5 +166,18 @@ namespace GeradorDeTestes2024.ModuloTeste
                 this.Text = "Duplicação de Teste";
             }
         }
+
+        private void cmbDisciplina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!checkBoxRecuperacao.Checked)
+            {
+                disciplina = (Disciplina)cmbDisciplina.SelectedItem;
+                foreach (Materia m in disciplina.Materias)
+                {
+                    cmbMateria.Items.Add(m);
+                }
+            }
+        }
     }
 }
+
