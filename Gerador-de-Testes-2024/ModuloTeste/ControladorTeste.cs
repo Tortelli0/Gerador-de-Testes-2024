@@ -2,7 +2,6 @@
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
-using GeradorDeTestes2024.ModuloMateria;
 using GeradorDeTestes2024.ModuloQuestao;
 
 namespace GeradorDeTestes2024.ModuloTeste
@@ -13,15 +12,13 @@ namespace GeradorDeTestes2024.ModuloTeste
         private TabelaTesteControl tabelaTeste;
         private IRepositorioDisciplina repositorioDisciplina;
         private IRepositorioQuestao repositorioQuestao;
-        private IRepositorioMateria repositorioMateria;
 
         public ControladorTeste(IRepositorioTeste repositorioTeste, IRepositorioDisciplina repositorioDisciplina,
-            IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
+            IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioTeste = repositorioTeste;
             this.repositorioDisciplina = repositorioDisciplina;
             this.repositorioQuestao = repositorioQuestao;
-            this.repositorioMateria = repositorioMateria;
             AtualizarRodapeQuantidadeRegistros();
         }
 
@@ -61,13 +58,14 @@ namespace GeradorDeTestes2024.ModuloTeste
             Teste novoTeste = telaTeste.Teste;
 
             repositorioTeste.Cadastrar(novoTeste);
+            repositorioDisciplina.AdicionarDependenciaTeste(novoTeste);
+            repositorioQuestao.AdicionarDependencia(novoTeste);
 
             CarregarTestes();
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novoTeste.Titulo}\" foi criado com sucesso!");
 
         }
-
         public override void Editar()
         {
             Teste TesteSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
@@ -96,14 +94,16 @@ namespace GeradorDeTestes2024.ModuloTeste
             if (resultado != DialogResult.OK)
                 return;
 
-            Teste TesteEditada = telaTeste.Teste;
+            Teste TesteEditado = telaTeste.Teste;
 
-            repositorioTeste.Editar(TesteSelecionado.Id, TesteEditada);
+            repositorioDisciplina.AtualizarDependenciaTeste(TesteSelecionado, TesteEditado);
+            repositorioQuestao.AtualizarDependencia(TesteSelecionado, TesteEditado);
+            repositorioTeste.Editar(TesteSelecionado.Id, TesteEditado);
             CarregarTestes();
 
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape($"O registro \"{TesteEditada.Titulo}\" foi editado com sucesso!");
+                .AtualizarRodape($"O registro \"{TesteEditado.Titulo}\" foi editado com sucesso!");
         }
         public override void Excluir()
         {
@@ -151,6 +151,8 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioQuestao.SelecionarTodos(),
                 true);
 
+            telaTeste.Teste = TesteSelecionado;
+
             DialogResult resultado = telaTeste.ShowDialog();
 
             if (resultado != DialogResult.OK)
@@ -159,6 +161,8 @@ namespace GeradorDeTestes2024.ModuloTeste
             Teste novoTeste = telaTeste.Teste;
 
             repositorioTeste.Cadastrar(novoTeste);
+            repositorioDisciplina.AdicionarDependenciaTeste(novoTeste);
+            repositorioQuestao.AdicionarDependencia(novoTeste);
 
             CarregarTestes();
 

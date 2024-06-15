@@ -55,14 +55,14 @@ namespace GeradorDeTestes.WinForm
 
         private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorQuestao(repositorioQuestao);
+            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
 
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
         }
         private void testesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioQuestao, repositorioMateria);
+            controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioQuestao);
 
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);

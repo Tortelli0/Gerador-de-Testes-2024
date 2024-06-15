@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestes.ConsoleApp.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
+using GeradorDeTestes2024.ModuloQuestao;
 
 namespace GeradorDeTestes2024.ModuloMateria
 {
@@ -8,10 +9,10 @@ namespace GeradorDeTestes2024.ModuloMateria
         public string Nome { get; set; }
         public string Serie { get; set; }
         public Disciplina Disciplina { get; set; }
-
+        public List<Questao> Questoes { get; set; }
         public Materia()
         {
-            
+
         }
 
         public Materia(string nome, string serie, Disciplina disciplina)
@@ -19,6 +20,15 @@ namespace GeradorDeTestes2024.ModuloMateria
             Nome = nome;
             Serie = serie;
             Disciplina = disciplina;
+            Questoes = new List<Questao>();
+        }
+        public Materia(int id, string nome, string serie, Disciplina disciplina)
+        {
+            Id = id;
+            Nome = nome;
+            Serie = serie;
+            Disciplina = disciplina;
+            Questoes = new List<Questao>();
         }
 
         public override List<string> Validar()
@@ -45,7 +55,7 @@ namespace GeradorDeTestes2024.ModuloMateria
 
         public override string ToString()
         {
-            return $"{Nome}, {Serie}, {Disciplina}";
+            return $"{Nome}, {Serie}";
         }
 
         public bool PrimeiraSerieMarcada()
@@ -53,6 +63,18 @@ namespace GeradorDeTestes2024.ModuloMateria
             if (Serie.Contains("1"))
                 return true;
 
+            return false;
+        }
+
+        public int QuantidadeQuestoes()
+        {
+            return Questoes.Count;
+        }
+        public bool ExisteMateria(List<Materia> materias)
+        {
+            foreach (Materia m in materias)
+                if (m.Nome == Nome)
+                    return true;
             return false;
         }
     }

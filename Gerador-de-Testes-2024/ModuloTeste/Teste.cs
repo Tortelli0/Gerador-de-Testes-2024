@@ -12,17 +12,24 @@ namespace GeradorDeTestes2024.ModuloTeste
         public Materia Materia { get; set; }
         public string Serie { get; set; }
         public List<Questao> Questoes { get; set; }
-
         public bool Recuperacao { get; set; }
         public Teste()
         {
 
         }
 
-        public Teste(string titulo, Disciplina disciplina, List<Questao> questoes)
+        public Teste(string titulo, string serie, Disciplina disciplina, List<Questao> questoes)
         {
             Titulo = titulo;
-            Serie = "";
+            Serie = serie;
+            Disciplina = disciplina;
+            Questoes = questoes;
+        }
+        public Teste(int id, string titulo, string serie, Disciplina disciplina, List<Questao> questoes)
+        {
+            Id = id;
+            Titulo = titulo;
+            Serie = serie;
             Disciplina = disciplina;
             Questoes = questoes;
         }
@@ -57,6 +64,9 @@ namespace GeradorDeTestes2024.ModuloTeste
             if (string.IsNullOrEmpty(Titulo.Trim()))
                 erros.Add("O campo \"Enunciado\" é obrigatório");
 
+            if (string.IsNullOrEmpty(Serie))
+                erros.Add("É necessário selecionar uma \"Série\"");
+
             if (Materia == null && !Recuperacao)
                 erros.Add("É necessário selecionar uma \"Matéria\"");
 
@@ -64,3 +74,4 @@ namespace GeradorDeTestes2024.ModuloTeste
         }
     }
 }
+
