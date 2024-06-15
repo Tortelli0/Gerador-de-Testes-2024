@@ -33,7 +33,7 @@ namespace GeradorDeTestes2024.ModuloMateria
                 return;
             }
 
-            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
+            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos(), repositorioMateria.SelecionarTodos());
 
             DialogResult resultado = telaMateria.ShowDialog();
 
@@ -59,7 +59,7 @@ namespace GeradorDeTestes2024.ModuloMateria
                 return;
             }
 
-            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos());
+            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioDisciplina.SelecionarTodos(), repositorioMateria.SelecionarTodos());
 
             int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
 

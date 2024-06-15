@@ -48,10 +48,10 @@ namespace GeradorDeTestes2024.ModuloDisciplina
             return erros;
         }
 
-        public bool ExisteDisciplina(List<Disciplina> disciplinas, Disciplina disciplina)
+        public bool ExisteDisciplina(List<Disciplina> disciplinas)
         {
             foreach (Disciplina d in disciplinas)
-                if (d.Nome == disciplina.Nome)
+                if (d.Nome == Nome)
                     return true;
             return false;
         }

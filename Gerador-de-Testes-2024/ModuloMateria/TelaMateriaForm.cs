@@ -7,6 +7,7 @@ namespace GeradorDeTestes2024.ModuloMateria
     public partial class TelaMateriaForm : Form
     {
         private int id = -1;
+        private List<Materia> materias;
         private Materia materia;
         public Materia Materia
         {
@@ -25,11 +26,12 @@ namespace GeradorDeTestes2024.ModuloMateria
             }
         }
 
-        public TelaMateriaForm(List<Disciplina> disciplinas)
+        public TelaMateriaForm(List<Disciplina> disciplinas, List<Materia> materias)
         {
             InitializeComponent();
             this.ConfigurarDialog();
             CarregarComboBox(disciplinas);
+            this.materias = materias;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -53,6 +55,12 @@ namespace GeradorDeTestes2024.ModuloMateria
             if (erros.Count > 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }
+            if (materia.ExisteMateria(materias) && id == -1)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Já existe uma \"Matéria\" com o nome de: \"{materia.Nome}\"!");
 
                 DialogResult = DialogResult.None;
             }

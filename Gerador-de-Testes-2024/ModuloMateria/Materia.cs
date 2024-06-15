@@ -70,5 +70,12 @@ namespace GeradorDeTestes2024.ModuloMateria
         {
             return Questoes.Count;
         }
+        public bool ExisteMateria(List<Materia> materias)
+        {
+            foreach (Materia m in materias)
+                if (m.Nome == Nome)
+                    return true;
+            return false;
+        }
     }
 }

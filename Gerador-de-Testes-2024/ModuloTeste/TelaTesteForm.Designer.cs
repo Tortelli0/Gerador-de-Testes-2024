@@ -42,14 +42,19 @@
             btnSortear = new Button();
             btnGravar = new Button();
             btnCancelar = new Button();
+            label5 = new Label();
+            groupBox2 = new GroupBox();
+            rdbSegundaSerie = new RadioButton();
+            rdbPrimeiraSerie = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)numQuestoes).BeginInit();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(39, 35);
+            label1.Location = new Point(37, 35);
             label1.Name = "label1";
             label1.Size = new Size(40, 15);
             label1.TabIndex = 0;
@@ -58,7 +63,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 69);
+            label2.Location = new Point(16, 69);
             label2.Name = "label2";
             label2.Size = new Size(61, 15);
             label2.TabIndex = 1;
@@ -67,7 +72,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 104);
+            label3.Location = new Point(27, 104);
             label3.Name = "label3";
             label3.Size = new Size(50, 15);
             label3.TabIndex = 2;
@@ -131,7 +136,7 @@
             // 
             groupBox1.Controls.Add(listQuestoes);
             groupBox1.Controls.Add(btnSortear);
-            groupBox1.Location = new Point(27, 152);
+            groupBox1.Location = new Point(27, 163);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(359, 278);
             groupBox1.TabIndex = 9;
@@ -162,7 +167,7 @@
             // btnGravar
             // 
             btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(230, 436);
+            btnGravar.Location = new Point(230, 447);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(75, 23);
             btnGravar.TabIndex = 10;
@@ -173,18 +178,63 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(311, 436);
+            btnCancelar.Location = new Point(311, 447);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 11;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(42, 137);
+            label5.Name = "label5";
+            label5.Size = new Size(35, 15);
+            label5.TabIndex = 12;
+            label5.Text = "Série:";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(rdbSegundaSerie);
+            groupBox2.Controls.Add(rdbPrimeiraSerie);
+            groupBox2.Location = new Point(83, 124);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(144, 33);
+            groupBox2.TabIndex = 13;
+            groupBox2.TabStop = false;
+            // 
+            // rdbSegundaSerie
+            // 
+            rdbSegundaSerie.AutoSize = true;
+            rdbSegundaSerie.Location = new Point(74, 11);
+            rdbSegundaSerie.Name = "rdbSegundaSerie";
+            rdbSegundaSerie.Size = new Size(64, 19);
+            rdbSegundaSerie.TabIndex = 1;
+            rdbSegundaSerie.TabStop = true;
+            rdbSegundaSerie.Text = "2º Série";
+            rdbSegundaSerie.UseVisualStyleBackColor = true;
+            rdbSegundaSerie.CheckedChanged += rdbSegundaSerie_CheckedChanged;
+            // 
+            // rdbPrimeiraSerie
+            // 
+            rdbPrimeiraSerie.AutoSize = true;
+            rdbPrimeiraSerie.Location = new Point(4, 11);
+            rdbPrimeiraSerie.Name = "rdbPrimeiraSerie";
+            rdbPrimeiraSerie.Size = new Size(64, 19);
+            rdbPrimeiraSerie.TabIndex = 0;
+            rdbPrimeiraSerie.TabStop = true;
+            rdbPrimeiraSerie.Text = "1º Série";
+            rdbPrimeiraSerie.UseVisualStyleBackColor = true;
+            rdbPrimeiraSerie.CheckedChanged += rdbPrimeiraSerie_CheckedChanged;
+            // 
             // TelaTesteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(410, 472);
+            ClientSize = new Size(402, 478);
+            Controls.Add(groupBox2);
+            Controls.Add(label5);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(groupBox1);
@@ -201,6 +251,8 @@
             Text = "Cadastro de Testes";
             ((System.ComponentModel.ISupportInitialize)numQuestoes).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,5 +273,9 @@
         private Button btnGravar;
         private Button btnCancelar;
         private ListBox listQuestoes;
+        private Label label5;
+        private GroupBox groupBox2;
+        private RadioButton rdbSegundaSerie;
+        private RadioButton rdbPrimeiraSerie;
     }
 }
