@@ -110,6 +110,9 @@ namespace GeradorDeTestes2024.ModuloMateria
                 return;
             }
 
+            if (PossuiDependencias(materiaSelecionada))
+                return;
+
             DialogResult resposta = MessageBox.Show(
                 $"Você deseja realmente excluir o registro \"{materiaSelecionada.Nome}\" ",
                 "Confirmar Exclusão",
@@ -152,6 +155,16 @@ namespace GeradorDeTestes2024.ModuloMateria
         private bool ValidarDisciplinasExistentes()
         {
             return repositorioDisciplina.SelecionarTodos().Any();
+        }
+
+        private bool PossuiDependencias(Materia materia)
+        {
+            if (materia.Questoes.Any())
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a matéria: {materia.Nome}, pois possui questões associadas!");
+                return true;
+            }
+            return false;
         }
     }
 }
