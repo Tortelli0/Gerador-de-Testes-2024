@@ -39,7 +39,7 @@ namespace GeradorDeTestes.WinForm
 
         private void DisciplinaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDisciplina(repositorioDisciplina);
+            controlador = new ControladorDisciplina(repositorioDisciplina, repositorioMateria, repositorioTeste);
 
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
