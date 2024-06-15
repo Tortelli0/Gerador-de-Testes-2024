@@ -83,7 +83,7 @@
             txtTitulo.Location = new Point(85, 31);
             txtTitulo.Name = "txtTitulo";
             txtTitulo.Size = new Size(301, 23);
-            txtTitulo.TabIndex = 3;
+            txtTitulo.TabIndex = 0;
             // 
             // cmbDisciplina
             // 
@@ -92,13 +92,13 @@
             cmbDisciplina.Location = new Point(85, 65);
             cmbDisciplina.Name = "cmbDisciplina";
             cmbDisciplina.Size = new Size(142, 23);
-            cmbDisciplina.TabIndex = 4;
+            cmbDisciplina.TabIndex = 1;
             cmbDisciplina.SelectedIndexChanged += cmbDisciplina_SelectedIndexChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(242, 69);
+            label4.Location = new Point(242, 137);
             label4.Name = "label4";
             label4.Size = new Size(85, 15);
             label4.TabIndex = 5;
@@ -106,10 +106,10 @@
             // 
             // numQuestoes
             // 
-            numQuestoes.Location = new Point(333, 65);
+            numQuestoes.Location = new Point(333, 133);
             numQuestoes.Name = "numQuestoes";
             numQuestoes.Size = new Size(53, 23);
-            numQuestoes.TabIndex = 6;
+            numQuestoes.TabIndex = 5;
             // 
             // cmbMateria
             // 
@@ -118,16 +118,16 @@
             cmbMateria.Location = new Point(85, 100);
             cmbMateria.Name = "cmbMateria";
             cmbMateria.Size = new Size(142, 23);
-            cmbMateria.TabIndex = 7;
+            cmbMateria.TabIndex = 3;
             cmbMateria.SelectedIndexChanged += cmbMateria_SelectedIndexChanged;
             // 
             // checkBoxRecuperacao
             // 
             checkBoxRecuperacao.AutoSize = true;
-            checkBoxRecuperacao.Location = new Point(242, 104);
+            checkBoxRecuperacao.Location = new Point(242, 67);
             checkBoxRecuperacao.Name = "checkBoxRecuperacao";
             checkBoxRecuperacao.Size = new Size(143, 19);
-            checkBoxRecuperacao.TabIndex = 8;
+            checkBoxRecuperacao.TabIndex = 2;
             checkBoxRecuperacao.Text = "Prova de Recuperação";
             checkBoxRecuperacao.UseVisualStyleBackColor = true;
             checkBoxRecuperacao.CheckedChanged += checkBoxRecuperacao_CheckedChanged;
@@ -139,7 +139,7 @@
             groupBox1.Location = new Point(27, 163);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(359, 278);
-            groupBox1.TabIndex = 9;
+            groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Questões Selecionadas:";
             // 
@@ -151,7 +151,7 @@
             listQuestoes.Name = "listQuestoes";
             listQuestoes.SelectionMode = SelectionMode.None;
             listQuestoes.Size = new Size(358, 229);
-            listQuestoes.TabIndex = 3;
+            listQuestoes.TabIndex = 2;
             // 
             // btnSortear
             // 
@@ -159,7 +159,7 @@
             btnSortear.Location = new Point(9, 19);
             btnSortear.Name = "btnSortear";
             btnSortear.Size = new Size(121, 25);
-            btnSortear.TabIndex = 2;
+            btnSortear.TabIndex = 1;
             btnSortear.Text = "Sortear Questões";
             btnSortear.UseVisualStyleBackColor = true;
             btnSortear.Click += btnSortear_Click;
@@ -170,7 +170,7 @@
             btnGravar.Location = new Point(230, 447);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(75, 23);
-            btnGravar.TabIndex = 10;
+            btnGravar.TabIndex = 7;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -181,7 +181,7 @@
             btnCancelar.Location = new Point(311, 447);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 11;
+            btnCancelar.TabIndex = 8;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -201,7 +201,7 @@
             groupBox2.Location = new Point(83, 124);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(144, 33);
-            groupBox2.TabIndex = 13;
+            groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             // 
             // rdbSegundaSerie
