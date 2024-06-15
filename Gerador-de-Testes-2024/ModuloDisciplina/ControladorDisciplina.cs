@@ -1,6 +1,5 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
-using GeradorDeTestes2024.ModuloMateria;
 
 
 namespace GeradorDeTestes2024.ModuloDisciplina
@@ -107,7 +106,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
             CarregarDisciplinas();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{disciplinaSelecionada.Nome}\" foi excluido com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{disciplinaSelecionada.Nome}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()

@@ -46,11 +46,11 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         public override void Editar()
         {
-            Questao QuestaoSelecionado = repositorioQuestao.SelecionarPorId(tabelaQuestao.ObterRegistroSelecionado());
+            Questao QuestaoSelecionada = repositorioQuestao.SelecionarPorId(tabelaQuestao.ObterRegistroSelecionado());
 
             TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos(), repositorioMateria.SelecionarTodos());
 
-            if (QuestaoSelecionado == null)
+            if (QuestaoSelecionada == null)
             {
                 MessageBox.Show(
                     "Não é possível realizar esta ação sem um registro selecionado.",
@@ -61,7 +61,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 return;
             }
 
-            telaQuestao.Questao = QuestaoSelecionado;
+            telaQuestao.Questao = QuestaoSelecionada;
 
             DialogResult resultado = telaQuestao.ShowDialog();
 
@@ -70,8 +70,8 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
             Questao QuestaoEditada = telaQuestao.Questao;
 
-            repositorioMateria.AtualizarDependencia(QuestaoSelecionado, QuestaoEditada);
-            repositorioQuestao.Editar(QuestaoSelecionado.Id, QuestaoEditada);
+            repositorioMateria.AtualizarDependencia(QuestaoSelecionada, QuestaoEditada);
+            repositorioQuestao.Editar(QuestaoSelecionada.Id, QuestaoEditada);
 
             CarregarQuestoes();
 
@@ -82,8 +82,8 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         public override void Excluir()
         {
-            Questao QuestaoSelecionado = repositorioQuestao.SelecionarPorId(tabelaQuestao.ObterRegistroSelecionado());
-            if (QuestaoSelecionado == null)
+            Questao QuestaoSelecionada = repositorioQuestao.SelecionarPorId(tabelaQuestao.ObterRegistroSelecionado());
+            if (QuestaoSelecionada == null)
             {
                 MessageBox.Show(
                     "Não é possível realizar esta ação sem um registro selecionado.",
@@ -94,7 +94,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 return;
             }
 
-            if (QuestaoSelecionado.Testes != null)
+            if (QuestaoSelecionada.Testes != null)
             {
                 MessageBox.Show(
                     "A questão esta relacionada a um teste, não é possível exclui-la",
@@ -106,17 +106,17 @@ namespace GeradorDeTestes2024.ModuloQuestao
             }
 
 
-            DialogResult resposta = MessageBox.Show($"Você deseja realmente excluir o registro \"{QuestaoSelecionado.Enunciado}\"?"
+            DialogResult resposta = MessageBox.Show($"Você deseja realmente excluir o registro \"{QuestaoSelecionada.Enunciado}\"?"
                 , "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resposta != DialogResult.Yes)
                 return;
 
-            repositorioQuestao.Excluir(QuestaoSelecionado.Id);
+            repositorioQuestao.Excluir(QuestaoSelecionada.Id);
 
             CarregarQuestoes();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{QuestaoSelecionado.Enunciado}\" foi excluído com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{QuestaoSelecionada.Enunciado}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()
@@ -132,9 +132,9 @@ namespace GeradorDeTestes2024.ModuloQuestao
         }
         private void CarregarQuestoes()
         {
-            List<Questao> Questaos = repositorioQuestao.SelecionarTodos();
+            List<Questao> Questoes = repositorioQuestao.SelecionarTodos();
 
-            tabelaQuestao.AtualizarRegistros(Questaos);
+            tabelaQuestao.AtualizarRegistros(Questoes);
         }
         private void AtualizarRodapeQuantidadeRegistros()
         {
