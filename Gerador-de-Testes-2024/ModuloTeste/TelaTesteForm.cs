@@ -207,6 +207,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             if (!checkBoxRecuperacao.Checked)
             {
                 disciplina = (Disciplina)cmbDisciplina.SelectedItem;
+                cmbMateria.Items.Clear();
                 foreach (Materia m in disciplina.Materias)
                 {
                     cmbMateria.Items.Add(m);
