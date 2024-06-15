@@ -72,7 +72,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
         {
             foreach (Alternativa a in listAlternativas.Items)
             {
-                if (a.Descricao.Contains(alternativa.Descricao))
+                if (a.Descricao.Split(" ")[2].Equals(alternativa.Descricao))
                 {
                     TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível cadastrar a mesma alternativa");
                     return true;
