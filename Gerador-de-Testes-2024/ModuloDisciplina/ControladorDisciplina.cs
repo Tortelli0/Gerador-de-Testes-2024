@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
+using GeradorDeTestes2024.ModuloMateria;
 
 
 namespace GeradorDeTestes2024.ModuloDisciplina
@@ -92,6 +93,9 @@ namespace GeradorDeTestes2024.ModuloDisciplina
                 return;
             }
 
+            if (PossuiDependencias(disciplinaSelecionada))
+                return;
+            
             DialogResult resposta = MessageBox.Show(
                 $"Você deseja realmente excluir o registro \"{disciplinaSelecionada.Nome}\" ",
                 "Confirmar Exclusão",
@@ -130,6 +134,23 @@ namespace GeradorDeTestes2024.ModuloDisciplina
         private void AtualizarRodapeQuantidadeRegistros()
         {
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {repositorioDisciplina.SelecionarTodos().Count} registro(s)...");
+        }
+
+        private bool PossuiDependencias(Disciplina disciplina)
+        {
+            if (disciplina.Materias.Any())
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a disciplina: {disciplina.Nome}, pois possui matérias ou testes associadas!");
+                return true;
+            }
+
+            if (disciplina.Testes.Any())
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a disciplina: {disciplina.Nome}, pois possui testes associados!");
+                return true;
+            }
+
+            return false;
         }
     }
 }
