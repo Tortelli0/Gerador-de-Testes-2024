@@ -40,6 +40,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
                 cmbMateria.SelectedItem = value.Materia;
 
+                numQuestoes.Maximum = value.RetornarQuantidadeQuestoes();
                 numQuestoes.Value = value.RetornarQuantidadeQuestoes();
 
                 if (value.Recuperacao)
