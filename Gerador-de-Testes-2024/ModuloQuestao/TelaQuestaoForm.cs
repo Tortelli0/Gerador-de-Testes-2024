@@ -55,6 +55,11 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            if (listAlternativas.Items.Count == 10)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível adicionar mais de 10 alternativas.");
+                return;
+            }
             string descricao = txtResposta.Text.Trim();
             alternativa = new Alternativa(descricao);
             if (ValidarAlternativaIgual(alternativa))
