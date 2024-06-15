@@ -11,6 +11,18 @@ namespace GeradorDeTestes2024.ModuloTeste
             if (contexto.Testes.Any())
                 contadorId = contexto.Questoes.Max(i => i.Id) + 1;
         }
+
+        public void atualizarDependenciaDisciplina(Disciplina disciplinaSelecionada, Disciplina disciplinaEditada)
+        {
+            List<Teste> teste = new List<Teste>();
+
+            foreach (Teste t in contexto.Testes)
+            {
+                if (t.Disciplina.Id == disciplinaSelecionada.Id)
+                    t.Disciplina = disciplinaEditada;
+            }
+        }
+
         public override bool Excluir(int id)
         {
             Teste teste = SelecionarPorId(id);

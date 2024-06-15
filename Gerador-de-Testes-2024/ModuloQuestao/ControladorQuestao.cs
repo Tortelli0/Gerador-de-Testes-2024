@@ -42,7 +42,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
             Questao novoQuestao = telaQuestao.Questao;
 
             repositorioQuestao.Cadastrar(novoQuestao);
-            repositorioMateria.AdicionarDependencia(novoQuestao);
+            repositorioMateria.AdicionarDependenciaQuestao(novoQuestao);
 
             CarregarQuestoes();
 
@@ -75,7 +75,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
             Questao QuestaoEditada = telaQuestao.Questao;
 
-            repositorioMateria.AtualizarDependencia(QuestaoSelecionada, QuestaoEditada);
+            repositorioMateria.AtualizarDependenciaQuestao(QuestaoSelecionada, QuestaoEditada);
             repositorioQuestao.Editar(QuestaoSelecionada.Id, QuestaoEditada);
 
             CarregarQuestoes();

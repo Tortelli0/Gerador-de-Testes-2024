@@ -1,6 +1,7 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.ModuloMateria;
+using GeradorDeTestes2024.ModuloTeste;
 
 
 namespace GeradorDeTestes2024.ModuloDisciplina
@@ -9,10 +10,15 @@ namespace GeradorDeTestes2024.ModuloDisciplina
     {
         private TabelaDisciplinaControl tabelaDisciplina;
         private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioMateria repositorioMateria;
+        private IRepositorioTeste repositorioTeste;
 
-        public ControladorDisciplina(IRepositorioDisciplina repoDisciplina)
+        public ControladorDisciplina(IRepositorioDisciplina repositorioDisciplina,
+            IRepositorioMateria repositorioMateria, IRepositorioTeste repositorioTeste)
         {
-            repositorioDisciplina = repoDisciplina;
+            this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioMateria = repositorioMateria;
+            this.repositorioTeste = repositorioTeste;
             AtualizarRodapeQuantidadeRegistros();
         }
 
@@ -69,6 +75,8 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
             Disciplina disciplinaEditada = telaDisciplina.Disciplina;
 
+            repositorioMateria.AtualizarDependenciaDisciplina(disciplinaSelecionada, disciplinaEditada);
+            repositorioTeste.atualizarDependenciaDisciplina(disciplinaSelecionada, disciplinaEditada);
             repositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
 
             CarregarDisciplinas();
@@ -95,7 +103,7 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
             if (PossuiDependencias(disciplinaSelecionada))
                 return;
-            
+
             DialogResult resposta = MessageBox.Show(
                 $"Você deseja realmente excluir o registro \"{disciplinaSelecionada.Nome}\" ",
                 "Confirmar Exclusão",

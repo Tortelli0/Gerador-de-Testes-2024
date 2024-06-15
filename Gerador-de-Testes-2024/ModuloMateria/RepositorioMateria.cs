@@ -12,14 +12,25 @@ namespace GeradorDeTestes2024.ModuloMateria
                 contadorId = contexto.Materias.Max(i => i.Id) + 1;
         }
 
-        public void AdicionarDependencia(Questao novoQuestao)
+        public void AdicionarDependenciaQuestao(Questao novoQuestao)
         {
             Materia materia = contexto.Materias.Find(m => m.Id == novoQuestao.Materia.Id);
             materia.Questoes.Add(novoQuestao);
             Editar(materia.Id, materia);
         }
 
-        public void AtualizarDependencia(Questao questaoSelecionado, Questao questaoEditada)
+        public void AtualizarDependenciaDisciplina(Disciplina disciplinaSelecionada, Disciplina disciplinaEditada)
+        {
+            List<Materia> materias = new List<Materia>();
+
+            foreach (Materia mat in contexto.Materias)
+            {
+                if (mat.Disciplina.Id == disciplinaSelecionada.Id)
+                    mat.Disciplina = disciplinaEditada;
+            }
+        }
+
+        public void AtualizarDependenciaQuestao(Questao questaoSelecionado, Questao questaoEditada)
         {
             Materia materia = null;
             List<Questao> questoes = new List<Questao>();
