@@ -101,16 +101,6 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
             if (PossuiDependencias(QuestaoSelecionada))
                 return;
-            {
-                MessageBox.Show(
-                    "A questão esta relacionada a um teste, não é possível exclui-la",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-                return;
-            }
-
 
             DialogResult resposta = MessageBox.Show($"Você deseja realmente excluir o registro \"{QuestaoSelecionada.Enunciado}\"?"
                 , "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
