@@ -21,6 +21,13 @@ namespace GeradorDeTestes2024.ModuloDisciplina
             Materias = new List<Materia>();
             Testes = new List<Teste>();
         }
+        public Disciplina(int id, string nome)
+        {
+            Id = id;
+            Nome = nome;
+            Materias = new List<Materia>();
+            Testes = new List<Teste>();
+        }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {

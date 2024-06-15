@@ -9,6 +9,7 @@ namespace GeradorDeTestes2024.ModuloTeste
     public partial class TelaTesteForm : Form
     {
         private bool duplicar;
+        private int id = -1;
         private Disciplina disciplina;
         private Teste teste;
         private List<Teste> testes;
@@ -19,6 +20,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             get { return teste; }
             set
             {
+                id = value.Id;
                 txtTitulo.Text = value.Titulo;
 
                 if (duplicar)
@@ -105,7 +107,10 @@ namespace GeradorDeTestes2024.ModuloTeste
                 questoesSelecionadas.Add(q);
             }
 
-            teste = new Teste(titulo, disciplina, questoesSelecionadas);
+            if (id != -1)
+                teste = new Teste(id, titulo, disciplina, questoesSelecionadas);
+            else
+                teste = new Teste(titulo, disciplina, questoesSelecionadas);
 
             if (!checkBoxRecuperacao.Checked && cmbMateria.SelectedItem != null)
             {

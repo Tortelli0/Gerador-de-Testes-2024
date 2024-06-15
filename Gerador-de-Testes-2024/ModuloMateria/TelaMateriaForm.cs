@@ -1,18 +1,18 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
-using System.Diagnostics.Eventing.Reader;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GeradorDeTestes2024.ModuloMateria
 {
     public partial class TelaMateriaForm : Form
     {
+        private int id = -1;
         private Materia materia;
         public Materia Materia
         {
             set
             {
+                id = value.Id;
                 txtNomeMateria.Text = value.Nome;
                 radioButtonSerie1.Checked = value.PrimeiraSerieMarcada();
                 if (!radioButtonSerie1.Checked)
@@ -43,7 +43,10 @@ namespace GeradorDeTestes2024.ModuloMateria
 
             Disciplina disciplina = (Disciplina)comboBoxMateriaDisciplina.SelectedItem;
 
-            materia = new Materia(nome, serie, disciplina);
+            if (id != -1)
+                materia = new Materia(id, nome, serie, disciplina);
+            else
+                materia = new Materia(nome, serie, disciplina);
 
             List<string> erros = materia.Validar();
 
@@ -52,7 +55,7 @@ namespace GeradorDeTestes2024.ModuloMateria
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
 
                 DialogResult = DialogResult.None;
-            }          
+            }
         }
 
         private void CarregarComboBox(List<Disciplina> disciplinas)

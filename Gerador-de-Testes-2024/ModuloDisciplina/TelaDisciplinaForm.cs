@@ -5,12 +5,14 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 {
     public partial class TelaDisciplinaForm : Form
     {
+        private int id = -1;
         private Disciplina disciplina;
         private List<Disciplina> disciplinas;
         public Disciplina Disciplina
         {
             set
             {
+                id = value.Id;
                 txtNomeDisciplina.Text = value.Nome;
             }
             get
@@ -30,7 +32,11 @@ namespace GeradorDeTestes2024.ModuloDisciplina
         {
             string nome = txtNomeDisciplina.Text.Trim();
 
-            disciplina = new Disciplina(nome);
+            if (id != -1)
+                disciplina = new Disciplina(id, nome);
+            else
+                disciplina = new Disciplina(nome);
+
 
             List<string> erros = disciplina.Validar();
 

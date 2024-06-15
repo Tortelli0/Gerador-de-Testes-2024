@@ -7,6 +7,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
 {
     public partial class TelaQuestaoForm : Form
     {
+        private int id = -1;
         private List<Questao> questoes;
         private Alternativa alternativa;
         private Questao questao;
@@ -15,6 +16,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
             get { return questao; }
             set
             {
+                id = value.Id;
                 cmbMateria.SelectedItem = value.Materia;
                 txtEnunciado.Text = value.Enunciado;
                 CarregarLista(value);
@@ -109,7 +111,10 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 alternativas.Add(a);
             }
 
-            questao = new Questao(materia, enunciado, alternativas);
+            if (id != -1)
+                questao = new Questao(id, materia, enunciado, alternativas);
+            else
+                questao = new Questao(materia, enunciado, alternativas);
 
             List<string> erros = questao.Validar();
             if (erros.Count > 0)
