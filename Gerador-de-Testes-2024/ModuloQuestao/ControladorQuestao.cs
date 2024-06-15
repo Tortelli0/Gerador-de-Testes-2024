@@ -27,6 +27,11 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         public override void Adicionar()
         {
+            if (!PossuiRegistroSuficiente())
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível adicionar uma \"Questão\" sem ter uma \"Materia\"!");
+                return;
+            }
             TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioQuestao.SelecionarTodos(), repositorioMateria.SelecionarTodos());
 
             DialogResult resultado = telaQuestao.ShowDialog();
@@ -139,6 +144,10 @@ namespace GeradorDeTestes2024.ModuloQuestao
         private void AtualizarRodapeQuantidadeRegistros()
         {
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {repositorioQuestao.SelecionarTodos().Count} registro(s)...");
+        }
+        private bool PossuiRegistroSuficiente()
+        {
+            return repositorioMateria.SelecionarTodos().Any();
         }
     }
 }

@@ -55,6 +55,11 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            if (listAlternativas.Items.Count == 10)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível adicionar mais de 10 alternativas.");
+                return;
+            }
             string descricao = txtResposta.Text.Trim();
             alternativa = new Alternativa(descricao);
             if (ValidarAlternativaIgual(alternativa))
@@ -67,7 +72,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
         {
             foreach (Alternativa a in listAlternativas.Items)
             {
-                if (a.Descricao.Contains(alternativa.Descricao))
+                if (a.Descricao.Split(" ")[2].Equals(alternativa.Descricao))
                 {
                     TelaPrincipalForm.Instancia.AtualizarRodape("Não é possível cadastrar a mesma alternativa");
                     return true;
