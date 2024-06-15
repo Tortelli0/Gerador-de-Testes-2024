@@ -1,7 +1,10 @@
-﻿namespace GeradorDeTestes2024.ModuloTeste
+﻿using GeradorDeTestes2024.ModuloDisciplina;
+
+namespace GeradorDeTestes2024.ModuloTeste
 {
-    internal interface IRepositorioTeste
+    public interface IRepositorioTeste
     {
+        void atualizarDependenciaDisciplina(Disciplina disciplinaSelecionada, Disciplina disciplinaEditada);
         void Cadastrar(Teste novaTeste);
         bool Editar(int id, Teste testeEditado);
         bool Excluir(int id);
