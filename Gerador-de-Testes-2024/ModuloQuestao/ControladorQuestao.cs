@@ -99,7 +99,8 @@ namespace GeradorDeTestes2024.ModuloQuestao
                 return;
             }
 
-            if (QuestaoSelecionada.Testes != null)
+            if (PossuiDependencias(QuestaoSelecionada))
+                return;
             {
                 MessageBox.Show(
                     "A questão esta relacionada a um teste, não é possível exclui-la",
@@ -148,6 +149,15 @@ namespace GeradorDeTestes2024.ModuloQuestao
         private bool PossuiRegistroSuficiente()
         {
             return repositorioMateria.SelecionarTodos().Any();
+        }
+        private bool PossuiDependencias(Questao questao)
+        {
+            if (questao.Testes.Any())
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a matéria: {questao.Enunciado}, pois possui questões associadas!");
+                return true;
+            }
+            return false;
         }
     }
 }
