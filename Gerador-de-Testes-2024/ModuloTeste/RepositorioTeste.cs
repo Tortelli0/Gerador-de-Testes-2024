@@ -34,7 +34,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 q.Testes.Remove(teste);
             }
 
-            Disciplina disciplina = contexto.Disciplinas.Find(d => d.Testes.Contains(teste));
+            Disciplina disciplina = contexto.Disciplinas.Find(d => d.Id == teste.Disciplina.Id);
             disciplina.Testes.Remove(teste);
 
             return base.Excluir(id);
