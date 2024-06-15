@@ -27,15 +27,32 @@ namespace GeradorDeTestes2024.ModuloTeste
         {
             Teste teste = SelecionarPorId(id);
 
-            List<Questao> questoes = contexto.Questoes.FindAll(q => q.Testes.Contains(teste));
-
+            List<Questao> questoes = new List<Questao>();
+            foreach (Questao q in contexto.Questoes)
+            {
+                if (q.Testes.Find(t => t.Id == teste.Id) != null)
+                    questoes.Add(q);
+            }
+            List<Teste> testes = new List<Teste>();
             foreach (Questao q in questoes)
             {
-                q.Testes.Remove(teste);
+                foreach (Teste t in q.Testes)
+                    if (t.Id != teste.Id)
+                        testes.Add(t);
+                q.Testes.Clear();
+                q.Testes = testes;
             }
 
+
+            testes = new List<Teste>();
             Disciplina disciplina = contexto.Disciplinas.Find(d => d.Id == teste.Disciplina.Id);
-            disciplina.Testes.Remove(teste);
+            foreach (Teste t in disciplina.Testes)
+            {
+                if (t.Id != teste.Id)
+                    testes.Add(t);
+            }
+            disciplina.Testes.Clear();
+            disciplina.Testes = testes;
 
             return base.Excluir(id);
         }

@@ -59,8 +59,15 @@ namespace GeradorDeTestes2024.ModuloMateria
         {
             Materia materia = SelecionarPorId(id);
 
+            List<Materia> materias = new List<Materia>();
             Disciplina disciplina = contexto.Disciplinas.Find(d => d.Id == materia.Disciplina.Id);
-            disciplina.Materias.Remove(materia);
+            foreach (Materia m in disciplina.Materias)
+            {
+                if (m.Id == materia.Id)
+                    materias.Add(m);
+            }
+            disciplina.Materias.Clear();
+            disciplina.Materias = materias;
 
             return base.Excluir(id);
         }
