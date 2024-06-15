@@ -59,7 +59,7 @@ namespace GeradorDeTestes2024.ModuloMateria
         {
             Materia materia = SelecionarPorId(id);
 
-            Disciplina disciplina = contexto.Disciplinas.Find(d => d.Materias.Contains(materia));
+            Disciplina disciplina = contexto.Disciplinas.Find(d => d.Id == materia.Disciplina.Id);
             disciplina.Materias.Remove(materia);
 
             return base.Excluir(id);
