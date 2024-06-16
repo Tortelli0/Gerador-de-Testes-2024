@@ -78,7 +78,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioDisciplina.SelecionarTodos(),
                 repositorioQuestao.SelecionarTodos(),
                 repositorioMateria.SelecionarTodos(),
-                false); ;
+                false);
 
             if (testeSelecionado == null)
             {
@@ -221,7 +221,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             string caminho = telaGerarPdf.Caminho;
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O arquivo foi gerado sucesso em: {caminho}");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O arquivo foi gerado com sucesso em: {caminho}");
 
         }
         public override UserControl ObterListagem()

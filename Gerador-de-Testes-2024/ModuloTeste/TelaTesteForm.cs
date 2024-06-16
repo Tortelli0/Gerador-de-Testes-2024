@@ -29,9 +29,6 @@ namespace GeradorDeTestes2024.ModuloTeste
 
                 cmbDisciplina.SelectedItem = value.Disciplina;
 
-                if (!duplicar)
-                    CarregarListaQuestoes(value.Questoes);
-
                 checkBoxRecuperacao.Checked = value.Recuperacao;
 
                 if (value.Serie.Contains("1"))
@@ -49,6 +46,8 @@ namespace GeradorDeTestes2024.ModuloTeste
                     cmbMateria.Enabled = false;
                     cmbMateria.SelectedIndex = -1;
                 }
+                if (!duplicar)
+                    CarregarListaQuestoes(value.Questoes, todasAsQuestoes);
             }
         }
         public TelaTesteForm(List<Teste> testes, List<Disciplina> disciplinas, List<Questao> questoes, List<Materia> materias, bool habilitarDuplicacao)
@@ -136,8 +135,6 @@ namespace GeradorDeTestes2024.ModuloTeste
             }
         }
 
-
-
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string titulo = txtTitulo.Text.Trim();
@@ -203,14 +200,16 @@ namespace GeradorDeTestes2024.ModuloTeste
                 copiaQuestoes.RemoveAt(index);
             }
         }
-        private void CarregarListaQuestoes(List<Questao> questoes)
+
+        private void CarregarListaQuestoes(List<Questao> questoesDoTeste, List<Questao> questoes)
         {
             listQuestoes.Items.Clear();
-            foreach (Questao q in questoes)
+            foreach (Questao quest in questoesDoTeste)
             {
-                listQuestoes.Items.Add(q);
+                listQuestoes.Items.Add(questoes.Find(q => q.Id == quest.Id));
             }
         }
+
         private void ConfigurarTelaDuplicacao(bool habilitarDuplicacao)
         {
             if (habilitarDuplicacao)
@@ -219,8 +218,6 @@ namespace GeradorDeTestes2024.ModuloTeste
                 this.Text = "Duplicação de Teste";
             }
         }
-
-
         private string RetornarSerieString()
         {
             if (rdbSegundaSerie.Checked)
@@ -232,6 +229,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             else
                 return "";
         }
+
         private void SelecionarQuestoesDisciplina()
         {
             numQuestoes.Value = 0;

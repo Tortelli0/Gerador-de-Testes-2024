@@ -72,9 +72,9 @@ namespace GeradorDeTestes2024.ModuloTeste
             int numeroQuestao = 1;
             conteudoPdf += "=================================QUESTÕES=================================\n\n";
 
-            foreach (Questao quest in questoes)
+            foreach (Questao quest in testeSelecionado.Questoes)
             {
-                if (testeSelecionado.Questoes.Find(q => q.Id == quest.Id) != null)
+                if (questoes.Find(q => q.Id == quest.Id) != null)
                 {
                     conteudoPdf += $"{numeroQuestao}) {quest}\n";
                     numeroQuestao++;

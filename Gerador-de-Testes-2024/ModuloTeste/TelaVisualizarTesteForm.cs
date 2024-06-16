@@ -28,10 +28,9 @@ namespace GeradorDeTestes2024.ModuloTeste
                 if (m.Id == testeSelecionado.Materia.Id)
                     txtMateria.Text = m.Nome;
             }
-            foreach (Questao quest in questoes)
+            foreach (Questao quest in testeSelecionado.Questoes)
             {
-                if (testeSelecionado.Questoes.Find(q => q.Id == quest.Id) != null)
-                    listQuestoes.Items.Add(quest);
+                listQuestoes.Items.Add(questoes.Find(q => q.Id == quest.Id));
             }
         }
     }
