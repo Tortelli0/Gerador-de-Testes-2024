@@ -1,6 +1,7 @@
 ﻿using GeradorDeTestes.WinForm;
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.ModuloMateria;
+using GeradorDeTestes2024.ModuloTeste;
 
 namespace GeradorDeTestes2024.ModuloQuestao
 {
@@ -9,11 +10,13 @@ namespace GeradorDeTestes2024.ModuloQuestao
         private IRepositorioQuestao repositorioQuestao;
         private TabelaQuestaoControl tabelaQuestao;
         private IRepositorioMateria repositorioMateria;
+        private IRepositorioTeste repositorioTeste;
 
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria, IRepositorioTeste repositorioTeste)
         {
             this.repositorioQuestao = repositorioQuestao;
             this.repositorioMateria = repositorioMateria;
+            this.repositorioTeste = repositorioTeste;
             AtualizarRodapeQuantidadeRegistros();
         }
 
@@ -42,7 +45,6 @@ namespace GeradorDeTestes2024.ModuloQuestao
             Questao novoQuestao = telaQuestao.Questao;
 
             repositorioQuestao.Cadastrar(novoQuestao);
-            repositorioMateria.AdicionarDependenciaQuestao(novoQuestao);
 
             CarregarQuestoes();
 
@@ -75,7 +77,6 @@ namespace GeradorDeTestes2024.ModuloQuestao
 
             Questao QuestaoEditada = telaQuestao.Questao;
 
-            repositorioMateria.AtualizarDependenciaQuestao(QuestaoSelecionada, QuestaoEditada);
             repositorioQuestao.Editar(QuestaoSelecionada.Id, QuestaoEditada);
 
             CarregarQuestoes();
@@ -142,10 +143,13 @@ namespace GeradorDeTestes2024.ModuloQuestao
         }
         private bool PossuiDependencias(Questao questao)
         {
-            if (questao.Testes.Any())
+            foreach (Teste t in repositorioTeste.SelecionarTodos())
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a matéria: {questao.Enunciado}, pois possui questões associadas!");
-                return true;
+                if (t.Questoes.Find(q => q.Id == questao.Id) != null)
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a matéria: {questao.Enunciado}, pois possui questões associadas!");
+                    return true;
+                }
             }
             return false;
         }

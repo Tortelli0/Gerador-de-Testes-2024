@@ -2,6 +2,7 @@
 using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
+using GeradorDeTestes2024.ModuloMateria;
 using GeradorDeTestes2024.ModuloQuestao;
 
 namespace GeradorDeTestes2024.ModuloTeste
@@ -12,13 +13,15 @@ namespace GeradorDeTestes2024.ModuloTeste
         private TabelaTesteControl tabelaTeste;
         private IRepositorioDisciplina repositorioDisciplina;
         private IRepositorioQuestao repositorioQuestao;
+        private IRepositorioMateria repositorioMateria;
 
         public ControladorTeste(IRepositorioTeste repositorioTeste, IRepositorioDisciplina repositorioDisciplina,
-            IRepositorioQuestao repositorioQuestao)
+            IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
         {
             this.repositorioTeste = repositorioTeste;
             this.repositorioDisciplina = repositorioDisciplina;
             this.repositorioQuestao = repositorioQuestao;
+            this.repositorioMateria = repositorioMateria;
             AtualizarRodapeQuantidadeRegistros();
         }
 
@@ -48,6 +51,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioTeste.SelecionarTodos(),
                 repositorioDisciplina.SelecionarTodos(),
                 repositorioQuestao.SelecionarTodos(),
+                repositorioMateria.SelecionarTodos(),
                 false);
 
             DialogResult resultado = telaTeste.ShowDialog();
@@ -58,8 +62,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             Teste novoTeste = telaTeste.Teste;
 
             repositorioTeste.Cadastrar(novoTeste);
-            repositorioDisciplina.AdicionarDependenciaTeste(novoTeste);
-            repositorioQuestao.AdicionarDependencia(novoTeste);
+
 
             CarregarTestes();
 
@@ -74,7 +77,8 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioTeste.SelecionarTodos(),
                 repositorioDisciplina.SelecionarTodos(),
                 repositorioQuestao.SelecionarTodos(),
-                false);
+                repositorioMateria.SelecionarTodos(),
+                false); ;
 
             if (TesteSelecionado == null)
             {
@@ -96,8 +100,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             Teste TesteEditado = telaTeste.Teste;
 
-            repositorioDisciplina.AtualizarDependenciaTeste(TesteSelecionado, TesteEditado);
-            repositorioQuestao.AtualizarDependencia(TesteSelecionado, TesteEditado);
+
             repositorioTeste.Editar(TesteSelecionado.Id, TesteEditado);
             CarregarTestes();
 
@@ -149,6 +152,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioTeste.SelecionarTodos(),
                 repositorioDisciplina.SelecionarTodos(),
                 repositorioQuestao.SelecionarTodos(),
+                repositorioMateria.SelecionarTodos(),
                 true);
 
             telaTeste.Teste = TesteSelecionado;
@@ -161,8 +165,6 @@ namespace GeradorDeTestes2024.ModuloTeste
             Teste novoTeste = telaTeste.Teste;
 
             repositorioTeste.Cadastrar(novoTeste);
-            repositorioDisciplina.AdicionarDependenciaTeste(novoTeste);
-            repositorioQuestao.AdicionarDependencia(novoTeste);
 
             CarregarTestes();
 

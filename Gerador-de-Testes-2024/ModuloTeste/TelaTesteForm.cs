@@ -13,6 +13,7 @@ namespace GeradorDeTestes2024.ModuloTeste
         private Disciplina disciplina;
         private Teste teste;
         private List<Teste> testes;
+        private List<Materia> materias;
         private List<Questao> todasAsQuestoes;
         private List<Questao> questoesDisponiveis;
         public Teste Teste
@@ -50,24 +51,26 @@ namespace GeradorDeTestes2024.ModuloTeste
                 }
             }
         }
-        public TelaTesteForm(List<Teste> testes, List<Disciplina> disciplinas, List<Questao> questoes, bool habilitarDuplicacao)
+        public TelaTesteForm(List<Teste> testes, List<Disciplina> disciplinas, List<Questao> questoes, List<Materia> materias, bool habilitarDuplicacao)
         {
             InitializeComponent();
             ConfigurarTelaDuplicacao(habilitarDuplicacao);
             this.ConfigurarDialog();
             this.testes = testes;
-            todasAsQuestoes = questoes;
+            this.todasAsQuestoes = questoes;
+            this.materias = materias;
             CarregarInformacoes(disciplinas);
         }
 
         private void cmbMateria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listQuestoes.Items.Clear();
             if (cmbMateria.SelectedItem != null)
             {
                 numQuestoes.Value = 0;
                 Materia materiaSelecionada = (Materia)cmbMateria.SelectedItem;
-                numQuestoes.Maximum = materiaSelecionada.QuantidadeQuestoes();
-                questoesDisponiveis = materiaSelecionada.Questoes;
+                numQuestoes.Maximum = materiaSelecionada.QuantidadeQuestoes(todasAsQuestoes);
+                questoesDisponiveis = materiaSelecionada.ListaQuestoes(todasAsQuestoes);
                 HabilitarSerie(false);
             }
             else if (checkBoxRecuperacao.Checked)
@@ -76,7 +79,21 @@ namespace GeradorDeTestes2024.ModuloTeste
                 numQuestoes.Value = 0;
             }
         }
-
+        private void cmbDisciplina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listQuestoes.Items.Clear();
+            SelecionarQuestoesDisciplina();
+            if (!checkBoxRecuperacao.Checked)
+            {
+                disciplina = (Disciplina)cmbDisciplina.SelectedItem;
+                cmbMateria.Items.Clear();
+                foreach (Materia m in materias)
+                {
+                    if (m.Disciplina.Id == disciplina.Id)
+                        cmbMateria.Items.Add(m);
+                }
+            }
+        }
         private void HabilitarSerie(bool condicao)
         {
             rdbPrimeiraSerie.Enabled = condicao;
@@ -203,18 +220,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             }
         }
 
-        private void cmbDisciplina_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!checkBoxRecuperacao.Checked)
-            {
-                disciplina = (Disciplina)cmbDisciplina.SelectedItem;
-                cmbMateria.Items.Clear();
-                foreach (Materia m in disciplina.Materias)
-                {
-                    cmbMateria.Items.Add(m);
-                }
-            }
-        }
+
         private string RetornarSerieString()
         {
             if (rdbSegundaSerie.Checked)
@@ -228,11 +234,12 @@ namespace GeradorDeTestes2024.ModuloTeste
         }
         private void SelecionarQuestoesDisciplina()
         {
+            numQuestoes.Value = 0;
             Disciplina disciplinaSelecionada = (Disciplina)cmbDisciplina.SelectedItem;
             if ((rdbPrimeiraSerie.Checked || rdbSegundaSerie.Checked) && checkBoxRecuperacao.Checked)
             {
-                numQuestoes.Maximum = disciplinaSelecionada.QuantidadeQuestoes(RetornarSerieString());
-                questoesDisponiveis = disciplinaSelecionada.ListaQuestoes(RetornarSerieString());
+                numQuestoes.Maximum = disciplinaSelecionada.QuantidadeQuestoes(todasAsQuestoes, RetornarSerieString());
+                questoesDisponiveis = disciplinaSelecionada.ListaQuestoes(todasAsQuestoes, RetornarSerieString());
             }
 
         }

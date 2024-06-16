@@ -66,9 +66,30 @@ namespace GeradorDeTestes2024.ModuloMateria
             return false;
         }
 
-        public int QuantidadeQuestoes()
+        public int QuantidadeQuestoes(List<Questao> questoes)
         {
-            return Questoes.Count;
+            int count = 0;
+
+            foreach (Questao q in questoes)
+            {
+                if (q.Materia.Id == Id)
+                    count++;
+            }
+
+
+            return count;
+        }
+        public List<Questao> ListaQuestoes(List<Questao> questoes)
+        {
+            List<Questao> questoesDisponiveis = new List<Questao>();
+
+            foreach (Questao q in questoes)
+            {
+                if (q.Materia.Id == Id)
+                    questoesDisponiveis.Add(q);
+            }
+
+            return questoesDisponiveis;
         }
         public bool ExisteMateria(List<Materia> materias)
         {

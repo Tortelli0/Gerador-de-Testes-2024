@@ -47,7 +47,7 @@ namespace GeradorDeTestes.WinForm
 
         private void materiaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
@@ -55,14 +55,14 @@ namespace GeradorDeTestes.WinForm
 
         private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
+            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria, repositorioTeste);
 
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);
         }
         private void testesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioQuestao);
+            controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioQuestao, repositorioMateria);
 
             lblTipoCadastro.Text = "Cadastro de " + controlador.TipoCadastro;
             ConfigurarTelaPrincipal(controlador);

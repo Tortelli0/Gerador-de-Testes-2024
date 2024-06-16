@@ -75,8 +75,6 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
             Disciplina disciplinaEditada = telaDisciplina.Disciplina;
 
-            repositorioMateria.AtualizarDependenciaDisciplina(disciplinaSelecionada, disciplinaEditada);
-            repositorioTeste.atualizarDependenciaDisciplina(disciplinaSelecionada, disciplinaEditada);
             repositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
 
             CarregarDisciplinas();
@@ -146,18 +144,22 @@ namespace GeradorDeTestes2024.ModuloDisciplina
 
         private bool PossuiDependencias(Disciplina disciplina)
         {
-            if (disciplina.Materias.Any())
+            foreach (Materia m in repositorioMateria.SelecionarTodos())
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a disciplina: {disciplina.Nome}, pois possui matérias ou testes associadas!");
-                return true;
+                if (m.Disciplina.Id == disciplina.Id)
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a disciplina: {disciplina.Nome}, pois possui matérias ou testes associadas!");
+                    return true;
+                }
             }
-
-            if (disciplina.Testes.Any())
+            foreach (Teste t in repositorioTeste.SelecionarTodos())
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a disciplina: {disciplina.Nome}, pois possui testes associados!");
-                return true;
+                if (t.Disciplina.Id == disciplina.Id)
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a disciplina: {disciplina.Nome}, pois possui testes associados!");
+                    return true;
+                }
             }
-
             return false;
         }
     }
