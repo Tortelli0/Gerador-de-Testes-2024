@@ -126,7 +126,7 @@
             // 
             btnAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnAdicionar.Enabled = false;
-            btnAdicionar.Image = GeradorDeTestes2024.Properties.Resources.btnAdicionar;
+            btnAdicionar.Image = Properties.Resources.btnAdicionar;
             btnAdicionar.ImageScaling = ToolStripItemImageScaling.None;
             btnAdicionar.ImageTransparentColor = Color.Magenta;
             btnAdicionar.Name = "btnAdicionar";
@@ -138,7 +138,7 @@
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnEditar.Enabled = false;
-            btnEditar.Image = GeradorDeTestes2024.Properties.Resources.btnEditar;
+            btnEditar.Image = Properties.Resources.btnEditar;
             btnEditar.ImageScaling = ToolStripItemImageScaling.None;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
@@ -150,7 +150,7 @@
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnExcluir.Enabled = false;
-            btnExcluir.Image = GeradorDeTestes2024.Properties.Resources.btnExcluir;
+            btnExcluir.Image = Properties.Resources.btnExcluir;
             btnExcluir.ImageScaling = ToolStripItemImageScaling.None;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
@@ -167,7 +167,7 @@
             // 
             btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnDuplicar.Enabled = false;
-            btnDuplicar.Image = GeradorDeTestes2024.Properties.Resources.btnCopiar;
+            btnDuplicar.Image = Properties.Resources.btnCopiar;
             btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
             btnDuplicar.ImageTransparentColor = Color.Magenta;
             btnDuplicar.Name = "btnDuplicar";
@@ -179,7 +179,7 @@
             // 
             btnVisualizar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnVisualizar.Enabled = false;
-            btnVisualizar.Image = GeradorDeTestes2024.Properties.Resources.btnVisualizar;
+            btnVisualizar.Image = Properties.Resources.btnVisualizar;
             btnVisualizar.ImageScaling = ToolStripItemImageScaling.None;
             btnVisualizar.ImageTransparentColor = Color.Magenta;
             btnVisualizar.Name = "btnVisualizar";
@@ -191,7 +191,7 @@
             // 
             btnPDF.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnPDF.Enabled = false;
-            btnPDF.Image = GeradorDeTestes2024.Properties.Resources.btnPDF;
+            btnPDF.Image = Properties.Resources.btnPDF;
             btnPDF.ImageScaling = ToolStripItemImageScaling.None;
             btnPDF.ImageTransparentColor = Color.Magenta;
             btnPDF.Name = "btnPDF";
@@ -229,7 +229,6 @@
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaPrincipalForm";
             ShowIcon = false;
