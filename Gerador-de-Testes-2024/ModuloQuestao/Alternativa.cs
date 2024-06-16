@@ -1,6 +1,4 @@
-﻿
-
-namespace GeradorDeTestes2024.ModuloQuestao
+﻿namespace GeradorDeTestes2024.ModuloQuestao
 {
     public class Alternativa
     {

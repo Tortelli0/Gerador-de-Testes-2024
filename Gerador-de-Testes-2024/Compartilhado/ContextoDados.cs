@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 
-namespace GeradorDeTestes.WinForm.Compartilhado
+namespace GeradorDeTestes2024.Compartilhado
 {
     public class ContextoDados
     {

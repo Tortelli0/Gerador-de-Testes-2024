@@ -1,4 +1,4 @@
-﻿namespace GeradorDeTestes.ConsoleApp.Compartilhado
+﻿namespace GeradorDeTestes2024.Compartilhado
 {
     public abstract class EntidadeBase
     {

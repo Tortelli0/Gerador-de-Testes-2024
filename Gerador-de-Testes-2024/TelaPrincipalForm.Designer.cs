@@ -1,4 +1,4 @@
-﻿namespace GeradorDeTestes.WinForm
+﻿namespace GeradorDeTestes2024
 {
     partial class TelaPrincipalForm
     {

@@ -1,4 +1,4 @@
-﻿namespace GeradorDeTestes.WinForm.Compartilhado
+﻿namespace GeradorDeTestes2024.Compartilhado
 {
     public abstract class ControladorBase
     {

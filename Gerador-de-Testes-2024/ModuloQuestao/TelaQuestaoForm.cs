@@ -1,6 +1,4 @@
-﻿
-using GeradorDeTestes.WinForm;
-using GeradorDeTestes2024.Compartilhado;
+﻿using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloMateria;
 
 namespace GeradorDeTestes2024.ModuloQuestao

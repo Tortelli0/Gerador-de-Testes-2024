@@ -1,4 +1,4 @@
-﻿using GeradorDeTestes.WinForm.Compartilhado;
+﻿using GeradorDeTestes2024.Compartilhado;
 
 namespace GeradorDeTestes2024.ModuloTeste
 {

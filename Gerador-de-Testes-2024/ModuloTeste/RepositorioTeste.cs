@@ -1,4 +1,4 @@
-﻿using GeradorDeTestes.WinForm.Compartilhado;
+﻿using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
 using GeradorDeTestes2024.ModuloQuestao;
 

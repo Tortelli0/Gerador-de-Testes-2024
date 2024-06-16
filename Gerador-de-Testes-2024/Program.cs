@@ -1,4 +1,4 @@
-using GeradorDeTestes.WinForm;
+using GeradorDeTestes2024;
 
 namespace GeradorDeTestes2024
 {

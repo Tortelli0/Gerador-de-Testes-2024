@@ -1,11 +1,10 @@
-using GeradorDeTestes.WinForm.Compartilhado;
 using GeradorDeTestes2024.Compartilhado;
 using GeradorDeTestes2024.ModuloDisciplina;
 using GeradorDeTestes2024.ModuloMateria;
 using GeradorDeTestes2024.ModuloQuestao;
 using GeradorDeTestes2024.ModuloTeste;
 
-namespace GeradorDeTestes.WinForm
+namespace GeradorDeTestes2024
 {
     public partial class TelaPrincipalForm : Form
     {

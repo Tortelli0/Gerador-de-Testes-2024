@@ -1,6 +1,4 @@
-﻿using GeradorDeTestes.WinForm;
-
-namespace GeradorDeTestes2024
+﻿namespace GeradorDeTestes2024
 {
     public partial class Intro : Form
     {
