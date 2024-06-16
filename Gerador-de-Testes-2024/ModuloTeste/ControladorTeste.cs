@@ -196,6 +196,32 @@ namespace GeradorDeTestes2024.ModuloTeste
         }
         public void GerarPDF()
         {
+            Teste testeSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            TelaGerarPdfForm telaGerarPdf = new TelaGerarPdfForm(
+                testeSelecionado,
+                repositorioDisciplina.SelecionarTodos(),
+                repositorioMateria.SelecionarTodos(),
+                repositorioQuestao.SelecionarTodos());
+
+            DialogResult resultado = telaGerarPdf.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            string caminho = telaGerarPdf.Caminho;
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O arquivo foi gerado sucesso em: {caminho}");
 
         }
         public override UserControl ObterListagem()
