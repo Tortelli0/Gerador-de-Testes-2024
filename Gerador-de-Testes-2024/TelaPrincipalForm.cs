@@ -132,6 +132,16 @@ namespace GeradorDeTestes.WinForm
             if (controlador is IControladorDuplicavel controladorDuplicavel)
                 controladorDuplicavel.Duplicar();
         }
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorVisualizavel controladorVisualizavel)
+                controladorVisualizavel.Visualizar();
+        }
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorPDF controladorPDF)
+                controladorPDF.GerarPDF();
+        }
         private void TelaPrincipalForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

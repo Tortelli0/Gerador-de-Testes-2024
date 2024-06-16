@@ -185,6 +185,7 @@
             btnVisualizar.Name = "btnVisualizar";
             btnVisualizar.Padding = new Padding(5);
             btnVisualizar.Size = new Size(38, 38);
+            btnVisualizar.Click += btnVisualizar_Click;
             // 
             // btnPDF
             // 
@@ -196,6 +197,7 @@
             btnPDF.Name = "btnPDF";
             btnPDF.Padding = new Padding(5);
             btnPDF.Size = new Size(38, 38);
+            btnPDF.Click += btnPDF_Click;
             // 
             // toolStripSeparator3
             // 

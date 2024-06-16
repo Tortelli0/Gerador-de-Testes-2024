@@ -33,7 +33,7 @@ namespace GeradorDeTestes2024.ModuloTeste
 
         public override string ToolTipExcluir => "Excluir um teste existente";
 
-        public string ToolTipDuplicar => "Duplicar um teste existente";
+        public string ToolTipDuplicar => "Duplicar o teste selecionado";
 
         public string ToolTipVisualizar => "Visualizar os detalhes do teste selecionado";
 
@@ -71,7 +71,7 @@ namespace GeradorDeTestes2024.ModuloTeste
         }
         public override void Editar()
         {
-            Teste TesteSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
+            Teste testeSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
 
             TelaTesteForm telaTeste = new TelaTesteForm(
                 repositorioTeste.SelecionarTodos(),
@@ -80,7 +80,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioMateria.SelecionarTodos(),
                 false); ;
 
-            if (TesteSelecionado == null)
+            if (testeSelecionado == null)
             {
                 MessageBox.Show(
                     "Não é possível realizar esta ação sem um registro selecionado.",
@@ -91,7 +91,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 return;
             }
 
-            telaTeste.Teste = TesteSelecionado;
+            telaTeste.Teste = testeSelecionado;
 
             DialogResult resultado = telaTeste.ShowDialog();
 
@@ -101,7 +101,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             Teste TesteEditado = telaTeste.Teste;
 
 
-            repositorioTeste.Editar(TesteSelecionado.Id, TesteEditado);
+            repositorioTeste.Editar(testeSelecionado.Id, TesteEditado);
             CarregarTestes();
 
             TelaPrincipalForm
@@ -110,8 +110,8 @@ namespace GeradorDeTestes2024.ModuloTeste
         }
         public override void Excluir()
         {
-            Teste TesteSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
-            if (TesteSelecionado == null)
+            Teste testeSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
+            if (testeSelecionado == null)
             {
                 MessageBox.Show(
                     "Não é possível realizar esta ação sem um registro selecionado.",
@@ -122,22 +122,22 @@ namespace GeradorDeTestes2024.ModuloTeste
                 return;
             }
 
-            DialogResult resposta = MessageBox.Show($"Você deseja realmente excluir o registro \"{TesteSelecionado.Titulo}\"?"
+            DialogResult resposta = MessageBox.Show($"Você deseja realmente excluir o registro \"{testeSelecionado.Titulo}\"?"
                 , "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resposta != DialogResult.Yes)
                 return;
 
-            repositorioTeste.Excluir(TesteSelecionado.Id);
+            repositorioTeste.Excluir(testeSelecionado.Id);
 
             CarregarTestes();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{TesteSelecionado.Titulo}\" foi excluído com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{testeSelecionado.Titulo}\" foi excluído com sucesso!");
         }
         public void Duplicar()
         {
-            Teste TesteSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
-            if (TesteSelecionado == null)
+            Teste testeSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
+            if (testeSelecionado == null)
             {
                 MessageBox.Show(
                     "Não é possível realizar esta ação sem um registro selecionado.",
@@ -155,7 +155,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 repositorioMateria.SelecionarTodos(),
                 true);
 
-            telaTeste.Teste = TesteSelecionado;
+            telaTeste.Teste = testeSelecionado;
 
             DialogResult resultado = telaTeste.ShowDialog();
 
@@ -173,11 +173,30 @@ namespace GeradorDeTestes2024.ModuloTeste
         }
         public void Visualizar()
         {
-            throw new NotImplementedException();
+            Teste testeSelecionado = repositorioTeste.SelecionarPorId(tabelaTeste.ObterRegistroSelecionado());
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            TelaVisualizarTesteForm telaVisualisar = new TelaVisualizarTesteForm(
+                testeSelecionado,
+                repositorioDisciplina.SelecionarTodos(),
+                repositorioMateria.SelecionarTodos(),
+                repositorioQuestao.SelecionarTodos());
+
+            telaVisualisar.ShowDialog();
+
         }
         public void GerarPDF()
         {
-            throw new NotImplementedException();
+
         }
         public override UserControl ObterListagem()
         {
