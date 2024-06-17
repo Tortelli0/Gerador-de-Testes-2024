@@ -146,7 +146,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
             {
                 if (t.Questoes.Find(q => q.Id == questao.Id) != null)
                 {
-                    TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a matéria: {questao.Enunciado}, pois possui questões associadas!");
+                    TelaPrincipalForm.Instancia.AtualizarRodape($"Não é possível excluir a questão: {questao.Enunciado}, pois possui questões associadas!");
                     return true;
                 }
             }
