@@ -170,7 +170,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 DialogResult = DialogResult.None;
             }
 
-            if (teste.TituloTesteIgual(testes) && id == -1)
+            if (teste.TituloTesteIgual(testes))
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Já existe um \"Teste\" com o título de: \"{teste.Titulo}\"");
                 DialogResult = DialogResult.None;

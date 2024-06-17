@@ -57,7 +57,7 @@ namespace GeradorDeTestes2024.ModuloMateria
 
                 DialogResult = DialogResult.None;
             }
-            if (materia.ExisteMateria(materias) && id == -1)
+            if (materia.ExisteMateria(materias))
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Já existe uma \"Matéria\" com o nome de: \"{materia.Nome}\"!");
 
