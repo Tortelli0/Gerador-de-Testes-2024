@@ -66,7 +66,7 @@ namespace GeradorDeTestes2024.ModuloTeste
             foreach (Materia m in materias)
             {
                 if (m.Id == testeSelecionado.Materia.Id)
-                    conteudoPdf += $"Disciplina: {m}.\n\n";
+                    conteudoPdf += $"Matéria: {m}.\n\n";
             }
 
             int numeroQuestao = 1;
