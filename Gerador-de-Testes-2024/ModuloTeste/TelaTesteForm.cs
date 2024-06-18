@@ -104,12 +104,14 @@ namespace GeradorDeTestes2024.ModuloTeste
         {
             if (checkBoxRecuperacao.Checked)
             {
+                HabilitarSerie(true);
                 cmbMateria.SelectedIndex = -1;
                 cmbMateria.Enabled = false;
                 SelecionarQuestoesDisciplina();
             }
             else
             {
+                HabilitarSerie(false);
                 cmbMateria.Enabled = true;
                 numQuestoes.Value = 0;
                 numQuestoes.Maximum = 0;
