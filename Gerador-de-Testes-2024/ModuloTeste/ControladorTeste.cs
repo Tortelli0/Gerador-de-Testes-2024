@@ -206,11 +206,7 @@ namespace GeradorDeTestes2024.ModuloTeste
                 return;
             }
 
-            TelaGerarPdfForm telaGerarPdf = new TelaGerarPdfForm(
-                testeSelecionado,
-                repositorioDisciplina.SelecionarTodos(),
-                repositorioMateria.SelecionarTodos(),
-                repositorioQuestao.SelecionarTodos());
+            TelaGerarPdfForm telaGerarPdf = new TelaGerarPdfForm(testeSelecionado);
 
             DialogResult resultado = telaGerarPdf.ShowDialog();
 
@@ -218,8 +214,18 @@ namespace GeradorDeTestes2024.ModuloTeste
                 return;
 
             string caminho = telaGerarPdf.Caminho;
+            bool gabarito = telaGerarPdf.Gabarito;
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O arquivo foi gerado com sucesso em: {caminho}");
+            GerarArquivoPdf gerarArquivoPDF = new GerarArquivoPdf(
+                  testeSelecionado,
+                repositorioDisciplina.SelecionarTodos(),
+                repositorioMateria.SelecionarTodos(),
+                repositorioQuestao.SelecionarTodos());
+
+            if (gerarArquivoPDF.GerarPdf(caminho, gabarito))
+                TelaPrincipalForm.Instancia.AtualizarRodape($"A prova: \"{testeSelecionado.Titulo}\" foi gerado com sucesso na pasta: {caminho}.");
+            else
+                TelaPrincipalForm.Instancia.AtualizarRodape("Não foi possível gerar o arquivo PDF!");
 
         }
         public override UserControl ObterListagem()
