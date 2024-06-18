@@ -10,7 +10,7 @@ namespace GeradorDeTestes2024.ModuloTeste
         private bool duplicar;
         private int id = -1;
         private Disciplina disciplina;
-        private Teste teste;
+        private Teste teste = new Teste();
         private List<Teste> testes;
         private List<Materia> materias;
         private List<Questao> todasAsQuestoes;
@@ -123,9 +123,10 @@ namespace GeradorDeTestes2024.ModuloTeste
                 TelaPrincipalForm.Instancia.AtualizarRodape("É necessário selecionar uma \"Série\" para sortear questões");
                 return;
             }
+
             List<Questao> questoesSorteadas = new List<Questao>();
 
-            SortearQuestoes(questoesSorteadas);
+            questoesSorteadas = teste.SortearQuestoes(questoesDisponiveis, numQuestoes.Value);
 
             listQuestoes.Items.Clear();
             foreach (Questao q in questoesSorteadas)
@@ -185,19 +186,6 @@ namespace GeradorDeTestes2024.ModuloTeste
                 cmbDisciplina.Items.Add(disciplina);
             }
             cmbDisciplina.SelectedIndex = 0;
-        }
-        private void SortearQuestoes(List<Questao> questoesSorteadas)
-        {
-            List<Questao> copiaQuestoes = new List<Questao>(questoesDisponiveis);
-
-            Random rand = new Random();
-
-            while (questoesSorteadas.Count < numQuestoes.Value)
-            {
-                int index = rand.Next(copiaQuestoes.Count);
-                questoesSorteadas.Add(copiaQuestoes[index]);
-                copiaQuestoes.RemoveAt(index);
-            }
         }
 
         private void CarregarListaQuestoes(List<Questao> questoesDoTeste, List<Questao> questoes)

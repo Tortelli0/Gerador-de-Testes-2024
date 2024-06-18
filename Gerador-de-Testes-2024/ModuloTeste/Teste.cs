@@ -72,6 +72,24 @@ namespace GeradorDeTestes2024.ModuloTeste
 
             return erros;
         }
+
+        public List<Questao> SortearQuestoes(List<Questao> questoesDisponiveis, decimal numeroQuestoes)
+        {
+            List<Questao> copiaQuestoes = new List<Questao>(questoesDisponiveis);
+
+            List<Questao> questoesSorteadas = new List<Questao>();
+
+            Random rand = new Random();
+
+            while (questoesSorteadas.Count < numeroQuestoes)
+            {
+                int index = rand.Next(copiaQuestoes.Count);
+                questoesSorteadas.Add(copiaQuestoes[index]);
+                copiaQuestoes.RemoveAt(index);
+            }
+
+            return questoesSorteadas;
+        }
     }
 }
 
