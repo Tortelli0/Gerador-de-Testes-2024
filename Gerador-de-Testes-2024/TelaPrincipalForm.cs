@@ -25,7 +25,7 @@ namespace GeradorDeTestes2024
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            repositorioDisciplina = new RepositorioDisciplina(contexto);
+            repositorioDisciplina = new RepositorioDisciplinaEmSql();
             repositorioMateria = new RepositorioMateria(contexto);
             repositorioQuestao = new RepositorioQuestao(contexto);
             repositorioTeste = new RepositorioTeste(contexto);
