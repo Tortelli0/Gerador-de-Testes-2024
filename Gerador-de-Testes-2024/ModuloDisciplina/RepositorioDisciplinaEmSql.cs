@@ -2,7 +2,7 @@
 
 namespace GeradorDeTestes2024.ModuloDisciplina
 {
-    internal class RepositorioDisciplinaEmSql : IRepositorioDisciplina
+    public class RepositorioDisciplinaEmSql : IRepositorioDisciplina
     {
         private string enderecoBanco;
 
