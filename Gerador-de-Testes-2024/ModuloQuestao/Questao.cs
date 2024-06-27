@@ -10,10 +10,12 @@ namespace GeradorDeTestes2024.ModuloQuestao
         public string Enunciado { get; set; }
         public List<Alternativa> Alternativas { get; set; }
         public List<Teste> Testes { get; set; }
+
         public Questao()
         {
 
         }
+
         public Questao(Materia materia, string enunciado, List<Alternativa> alternativas)
         {
             Materia = materia;
@@ -21,6 +23,7 @@ namespace GeradorDeTestes2024.ModuloQuestao
             Alternativas = alternativas;
             Testes = new List<Teste>();
         }
+
         public Questao(int id, Materia materia, string enunciado, List<Alternativa> alternativas)
         {
             Id = id;
